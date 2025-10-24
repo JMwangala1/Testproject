@@ -1,0 +1,96 @@
+/* CSS  for the first heading*/
+.glam-heading {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2.5rem; /* This means size is 2.5 multiple by default rrot element size. en 16 px */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 30px; /* space above the element */
+    text-align: center;
+    color: #777;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    background-color: #f5f5f5;
+}
+
+/* CSS for my navigational menu */
+.nav-menu ul {
+   display: flex;  /* display content horizontal */
+   justify-content: center;  /* center align content */
+   list-style: none;   /* to remove the bullets */
+   padding: 0%;
+   margin: 0%;
+   background-color: #222;
+}
+.nav-menu li {
+    margin: 0 20 px; /* space between the items on menu */
+}
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    display: block;
+    cursor: pointer;
+    transition: background-color 0.8s;
+}
+.nav-menu a:hover {
+    background-color: #444;
+    color: white;
+    border-radius: 4px;
+}
+
+/* CSS for the body */
+body {
+    background-color: #fafafa;
+    color: #333;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+/* CSS for main(introduction) */
+main {
+   max-width: 900px;
+   margin: 30px auto;
+   background: white;
+   padding: 20px 40px;
+   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+   border-radius: 8px;
+}
+
+/* CSS for the section */
+section {
+    margin: 20px;
+}
+
+/* CSS for heading2 */
+h2 {
+    color: #333;
+    border-radius: 2px solid #eee;
+    padding: 5px;
+}
+
+/* CSS for Unordered List */
+  ul {
+    margin-left: 20px;
+  }
+
+  /* CSS for footer */
+  footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f5f5f5;
+    color: #555;
+    font-size: 0.9em;
+    margin: 40px;
+  }
+
+  /* CSS for Small Screen(mobile) */
+  @media (max-width: 600px) {
+    nav a {
+        display: block;
+        padding: 20px;
+    }
+    main {
+        padding: 20px;
+    }
+}
