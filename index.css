@@ -1,0 +1,203 @@
+/* CSS  for the first heading*/
+.glam-heading {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2.5rem; /* This means size is 2.5 multiple by default rrot element size. en 16 px */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 30px; /* space above the element */
+    text-align: center;
+    color: #777;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    background-color: #f5f5f5;
+}
+
+/* CSS for my navigational menu */
+.nav-menu {
+  position: fixed;           /* makes it sticky on scroll */
+  top: 0;
+  right: 0;
+  width: 50%;                /* take 60% of the screen from right */
+  z-index: 1000;             /* ensures it stays above all content */
+  background: rgba(0, 0, 0, 0.4); /* transparent dark overlay */
+  backdrop-filter: blur(6px);     /* adds a modern blur-glass look */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+}
+
+/* Optional: When scrolled, make background solid for better readability */
+body.scrolled .nav-menu {
+  background: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.nav-menu ul {
+  display: flex;
+  justify-content: flex-end; /* align items to right */
+  align-items: center;
+  list-style: none;
+  padding: 10px 20px;
+  margin: 0;
+}
+
+.nav-menu li {
+  margin: 0 15px;
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 15px;
+  display: block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 5px;
+}
+
+.nav-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+
+/* CSS for the body */
+body {
+    background-color: #fafafa;
+    color: #333;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+/* CSS for main(introduction) */
+main {
+   max-width: 900px;
+   margin: 30px auto;
+   background: white;
+   padding: 20px 40px;
+   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+   border-radius: 8px;
+}
+
+/* CSS for the section */
+section {
+    margin: 20px;
+}
+
+/* CSS for heading2 */
+h2 {
+    color: #333;
+    border-radius: 2px solid #eee;
+    padding: 5px;
+}
+
+/* CSS for Unordered List */
+  ul {
+    margin-left: 20px;
+  }
+
+  /* CSS for footer */
+  footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f5f5f5;
+    color: #555;
+    font-size: 0.9em;
+    margin: 40px;
+  }
+
+  /* CSS for Small Screen(mobile) */
+@media (max-width: 800px) {
+  .nav-menu {
+    width: 100%;              /* use full width on small screens */
+    justify-content: center;  /* center all items */
+    height: auto;             /* allow height to grow naturally */
+  }
+
+  .nav-menu ul {
+    flex-wrap: wrap;          /* allow items to wrap to new lines */
+    gap: 10px;                /* smaller space between items */
+    justify-content: center;  /* center them */
+    padding: 10px 5px;
+  }
+
+  .nav-menu a {
+    font-size: 0.9em;         /* slightly smaller text */
+    padding: 8px 10px;
+  }
+}
+
+
+/* Hero Section */
+.hero {
+  background-image: url(Images/Hero.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 800px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+/* To add dark overlay for text visibility */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Hero Text Content */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.hero-content h2 {
+  font-family: 'Playfair Display', serif; /* elegant serif for premium look */
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f8f8f8;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(90deg, #f8d17a, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* creates gold gradient text effect */
+}
+
+.hero-content p {
+  font-family: 'Poppins', sans-serif; /* modern, clean body text */
+  font-size: 1.1rem;
+  color: #f2f2f2;
+  letter-spacing: 0.5px;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 20px auto;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+}
+
+/* Button Style */
+.btn {
+  display: inline-block;
+  background-color: #f7c04a;
+  color: #333;
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  font-size: large;
+}
+
+.btn:hover {
+  background-color: #ffd56b;
+  transform: scale(1.05);
+}
