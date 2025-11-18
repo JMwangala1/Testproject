@@ -30,24 +30,15 @@
         </div>
     </header>
 
-    <!--My First Heading-->
-     <div class="heading-wrapper">
-           <div class="svg-top">
-              <img src="Images/Stribal-pattern.svg" alt="Stribal-pattern">
-           </div>
-         <h1 class="glam-heading">SAINT-MAN EVENTS AND CATERING</h1>
-           <div class="svg-bottom">
-             <img src="Images/Stribal-pattern.svg" alt="Stribal-pattern">
-          </div>
-     </div>
-
     <!--Introduction Section-->
     <main>
         <section class="welcome-section">
             <div class="welcome-content">
         <h2>Welcome to Saint-Man Events and Catering</h2>
-        <p>We offer proffesional catering and events planning services for weddings, 
-            parties, and corporate events.</p>
+        <p>We offer proffesional catering and <br>
+             events planning services for weddings,<br>
+            parties, <br>
+            and corporate events.</p>
             </div>
              <a href="#news" class="news-btn">NEWS</a>
             <div style="clear: both;"></div>
@@ -102,15 +93,7 @@
         </div>
     </section>
 
-    <!--This is Contacts Section-->
-    <section>
-        <h2>Contacts Us</h2>
-        <p>Email: <a href="mwangalajohn3@gmail.com">mwangalajohn3@gmail.com</a></p>
-        <p>Phone: +254 701 639 517</p> 
-        <p>Website: <a href="www.saint-maneventsandcatering.com">www.saint-maneventsandcatering.com</a></p>
-    </section>
-
-    <!--This is News section-->
+        <!--This is News section-->
      <section id="news">
         <h2>Latest News</h2>
         <p>We now offer full wedding packages! Contact us for details and discounts.</p>
@@ -124,6 +107,58 @@
      </section>
 
     </main>
+
+        <!--This is Contacts Section-->
+    <section>
+        <h2>Contacts Us</h2>
+        <p>Email: <a href="mwangalajohn3@gmail.com">mwangalajohn3@gmail.com</a></p>
+        <p>Phone: +254 701 639 517</p> 
+        <p>Website: <a href="www.saint-maneventsandcatering.com">www.saint-maneventsandcatering.com</a></p>
+    </section>
+
+    <!-- Contact / Booking Form -->
+<section id="contact-form" class="contact-section">
+  <h2>Book Your Event Here</h2>
+
+  <!-- Replace ACTION when you create your Formspree/Netlify endpoint -->
+  <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+    <label for="name">Full name</label>
+    <input id="name" name="name" type="text" required>
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required>
+
+    <label for="phone">Phone</label>
+    <input id="phone" name="phone" type="tel">
+
+    <label for="eventType">Event type</label>
+    <select id="eventType" name="eventType" required>
+      <option value="">Choose...</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Corporate</option>
+      <option>Private Party</option>
+    </select>
+
+    <label for="eventDate">Event date (approx)</label>
+    <input id="eventDate" name="eventDate" type="date">
+
+    <label for="guests">Estimated guests</label>
+    <input id="guests" name="guests" type="number" min="1">
+
+    <label for="message">Message / Special requests</label>
+    <textarea id="message" name="message" rows="5"></textarea>
+
+    <!-- optional hidden fields for Formspree -->
+    <input type="hidden" name="_subject" value="Saint-Man site enquiry">
+    <input type="hidden" name="_language" value="en">
+
+    <button type="submit" class="btn">BOOK THE EVENT</button>
+
+    <div id="formMessage" role="status" aria-live="polite"></div>
+  </form>
+</section>
+
 
     <!--This is Footers-->
     <br>

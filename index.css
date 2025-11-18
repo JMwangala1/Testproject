@@ -3,47 +3,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* CSS  for the first heading*/
-
-.heading-wrapper {
-    text-align:center;
-    margin: 30px 0;
-}
-
-.svg-top svg,
-.svg-bottom svg {
-    width: 60px;      /* adjust size */
-    height: auto;
-    display: inline-block;
-    margin: 10px 0;
-}
-
-.glam-heading {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 10px 0;    /* spacing between heading and SVGs */
-}
-
-.svg-top img,
-.svg-bottom img,
-.svg-top svg,
-.svg-bottom svg {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-.svg-top img,
-.svg-bottom img,
-.svg-top svg,
-.svg-bottom svg {
-    width: 100%;
-    height: 15px;     /* change this to what you want */
-    object-fit: cover;
-}
-
-
+/* CSS for the Glam-Heading */
 .glam-heading {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2.5rem; /* This means size is 2.5 multiple by default rrot element size. en 16 px */
@@ -143,7 +103,7 @@ section {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 250px;
+  height: 500px;
 }
 
 /* Left side content floats left */
@@ -154,13 +114,19 @@ section {
 
 .welcome-content h2 {
   margin: 0 0 10px 0;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  color: #f8f8f8;
+  background: linear-gradient(90deg, #f8d17a, #fff);
+  font-weight: 500;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
 }
 
 .welcome-content p {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 2rem;
   color: #444;
+  text-decoration: solid;
 }
 
 /* News button floats right */
@@ -398,5 +364,59 @@ html, body {
 * {
   box-sizing: border-box;
   max-width: 100%;
+}
+
+/* Contact / booking form */
+.contact-section {
+  width: 100%;
+  max-width: 980px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  box-sizing: border-box;
+}
+
+.contact-section h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 12px;
+}
+
+.contact-section form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.contact-section label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.contact-section input,
+.contact-section select,
+.contact-section textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+.contact-section textarea { grid-column: 1 / -1; }
+
+.contact-section .btn {
+  grid-column: 1 / -1;
+  justify-self: start;
+  width: 100%;
+}
+
+/* Make form single column on small screens */
+@media (max-width: 700px) {
+  .contact-section form { grid-template-columns: 1fr; }
+  .contact-section .btn { width: 100%; }
 }
 
