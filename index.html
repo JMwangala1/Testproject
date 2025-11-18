@@ -122,16 +122,26 @@
   <h2>Book Your Event Here</h2>
 
   <!-- Replace ACTION when you create your Formspree/Netlify endpoint -->
-  <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+  <form id="bookingForm" action="#" method="POST" novalidate>
+
+  <div class="form-grid">
+
+    <div class="form-group">
     <label for="name">Full name</label>
     <input id="name" name="name" type="text" required>
+    </div>
 
+    <div class="form-group">
     <label for="email">Email</label>
     <input id="email" name="email" type="email" required>
+    </div>
 
+    <div class="form-group">
     <label for="phone">Phone</label>
     <input id="phone" name="phone" type="tel">
+    </div>
 
+     <div class="form-group">
     <label for="eventType">Event type</label>
     <select id="eventType" name="eventType" required>
       <option value="">Choose...</option>
@@ -140,19 +150,24 @@
       <option>Corporate</option>
       <option>Private Party</option>
     </select>
+     </div>
 
+     <div class="form-group">
     <label for="eventDate">Event date (approx)</label>
     <input id="eventDate" name="eventDate" type="date">
+     </div>
 
+     <div class="form-group">
     <label for="guests">Estimated guests</label>
     <input id="guests" name="guests" type="number" min="1">
+     </div>
 
+     <div class="form-group full">
     <label for="message">Message / Special requests</label>
     <textarea id="message" name="message" rows="5"></textarea>
+    </div>
 
-    <!-- optional hidden fields for Formspree -->
-    <input type="hidden" name="_subject" value="Saint-Man site enquiry">
-    <input type="hidden" name="_language" value="en">
+  </div>
 
     <button type="submit" class="btn">BOOK THE EVENT</button>
 

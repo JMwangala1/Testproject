@@ -366,57 +366,57 @@ html, body {
   max-width: 100%;
 }
 
-/* Contact / booking form */
-.contact-section {
-  width: 100%;
-  max-width: 980px;
-  margin: 40px auto;
-  padding: 30px;
-  background: rgba(255,255,255,0.95);
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  box-sizing: border-box;
-}
-
-.contact-section h2 {
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 12px;
-}
-
-.contact-section form {
+/* Grid layout for form */
+.form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  gap: 20px;
 }
 
-.contact-section label {
-  display: block;
-  font-size: 0.9rem;
-  margin-bottom: 6px;
+.form-group {
+  display: flex;
+  flex-direction: column;
 }
 
-.contact-section input,
-.contact-section select,
-.contact-section textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ddd;
+/* Make specific fields full width (textarea, button) */
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+/* Inputs styling */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
   border-radius: 8px;
   font-family: 'Poppins', sans-serif;
-  box-sizing: border-box;
+  font-size: 1rem;
+  border-width: 2px;
 }
 
-.contact-section textarea { grid-column: 1 / -1; }
-
+/* Button full width */
 .contact-section .btn {
-  grid-column: 1 / -1;
-  justify-self: start;
+  margin-top: 20px;
   width: 100%;
+  grid-column: 1 / -1;
 }
 
-/* Make form single column on small screens */
+/* Mobile view — stack everything */
 @media (max-width: 700px) {
-  .contact-section form { grid-template-columns: 1fr; }
-  .contact-section .btn { width: 100%; }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-section {
+  width: 60%;
+  margin-left: 20%;      /* centers the section */
+  margin-right: 20%;
+  padding: 30px;          /* spacing inside */
+  background: #fff;       /* optional, can remove if you want */
+  border-radius: 12px;    /* optional */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* optional */
+  box-sizing: border-box;
 }
 
