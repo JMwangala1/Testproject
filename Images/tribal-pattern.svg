@@ -1,0 +1,14 @@
+<svg width="100%" height="20" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="africanPattern" x="0" y="0" width="60" height="20" patternUnits="userSpaceOnUse">
+      <!-- Yellow Zig-Zag -->
+      <path d="M0 0 L10 20 L20 0" stroke="#f2a900" stroke-width="4" fill="none" />
+      <!-- Red Zig-Zag -->
+      <path d="M20 20 L30 0 L40 20" stroke="#e63946" stroke-width="4" fill="none" />
+      <!-- White Zig-Zag -->
+      <path d="M40 0 L50 20 L60 0" stroke="#ffffff" stroke-width="4" fill="none" />
+    </pattern>
+  </defs>
+
+  <rect width="100%" height="20" fill="url(#africanPattern)" />
+</svg>

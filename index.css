@@ -4,6 +4,46 @@ html {
 }
 
 /* CSS  for the first heading*/
+
+.heading-wrapper {
+    text-align:center;
+    margin: 30px 0;
+}
+
+.svg-top svg,
+.svg-bottom svg {
+    width: 60px;      /* adjust size */
+    height: auto;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.glam-heading {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 10px 0;    /* spacing between heading and SVGs */
+}
+
+.svg-top img,
+.svg-bottom img,
+.svg-top svg,
+.svg-bottom svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.svg-top img,
+.svg-bottom img,
+.svg-top svg,
+.svg-bottom svg {
+    width: 100%;
+    height: 15px;     /* change this to what you want */
+    object-fit: cover;
+}
+
+
 .glam-heading {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2.5rem; /* This means size is 2.5 multiple by default rrot element size. en 16 px */
@@ -91,6 +131,70 @@ section {
     margin: 20px;
     scroll-margin-top: 100px; /* changes */
 }
+/* Full-width welcome section */
+.welcome-section {
+  width: 100%;
+  padding: 40px;
+  background-image: url(Images/wedding.jpg);   /* Replace with background image later */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  margin: 40px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 250px;
+}
+
+/* Left side content floats left */
+.welcome-content {
+  float: left;
+  width: 70%;             /* you can adjust (60–75%) */
+}
+
+.welcome-content h2 {
+  margin: 0 0 10px 0;
+  font-size: 2rem;
+}
+
+.welcome-content p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* News button floats right */
+.news-btn {
+  float: right;
+  background: #f7c04a;
+  padding: 12px 25px;
+  border-radius: 8px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+.news-btn:hover {
+  background: #ffd56b;
+  transform: scale(1.05);
+}
+
+/* Mobile version */
+@media (max-width: 700px) {
+  .welcome-content, .news-btn {
+    float: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  .news-btn {
+    margin-top: 20px;
+    display: inline-block;
+  }
+}
+
 
 /* CSS for heading2 */
 h2 {

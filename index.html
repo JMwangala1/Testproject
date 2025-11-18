@@ -17,7 +17,7 @@
             <li><a href="#products">PRODUCTS</a></li>
             <li><a href="#">CONTACTS</a></li>
             <li><a href="#">CAREERS</a></li>
-            <li><a href="#">NEWS</a></li>
+            <li><a href="#news">NEWS</a></li>
         </ul>
     </nav>
 
@@ -31,16 +31,26 @@
     </header>
 
     <!--My First Heading-->
-    <h1 class="glam-heading">SAINT-MAN EVENTS AND CATERING</h1>
-
-
+     <div class="heading-wrapper">
+           <div class="svg-top">
+              <img src="Images/Stribal-pattern.svg" alt="Stribal-pattern">
+           </div>
+         <h1 class="glam-heading">SAINT-MAN EVENTS AND CATERING</h1>
+           <div class="svg-bottom">
+             <img src="Images/Stribal-pattern.svg" alt="Stribal-pattern">
+          </div>
+     </div>
 
     <!--Introduction Section-->
     <main>
-        <section>
+        <section class="welcome-section">
+            <div class="welcome-content">
         <h2>Welcome to Saint-Man Events and Catering</h2>
         <p>We offer proffesional catering and events planning services for weddings, 
             parties, and corporate events.</p>
+            </div>
+             <a href="#news" class="news-btn">NEWS</a>
+            <div style="clear: both;"></div>
         </section>
 
     <!--Products & Services Section-->
@@ -49,6 +59,7 @@
         <div class="product-gallery">
             
          <ul>
+            <div>   </div>
             <div class="product-card">
                 <img src="Images/Catering.jpg" alt="Catering">
              <li><h3><strong>Full events catering</strong></h3>
@@ -100,7 +111,7 @@
     </section>
 
     <!--This is News section-->
-     <section>
+     <section id="news">
         <h2>Latest News</h2>
         <p>We now offer full wedding packages! Contact us for details and discounts.</p>
         <p>Christmas offers! Click to see amazing offers for your end of year enjoyment.</p>

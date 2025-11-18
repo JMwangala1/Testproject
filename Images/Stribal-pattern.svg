@@ -1,0 +1,39 @@
+<svg width="100%" height="20" viewBox="0 0 900 20" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Yellow Pattern -->
+  <path d="M0 0 L20 20 L40 0 L60 20 L80 0 L100 20" 
+        stroke="#f2a900" stroke-width="4" fill="none"/>
+
+  <!-- Red Pattern -->
+  <path d="M100 20 L120 0 L140 20 L160 0 L180 20 L200 0" 
+        stroke="#e63946" stroke-width="4" fill="none"/>
+
+  <!-- White Pattern -->
+  <path d="M200 0 L220 20 L240 0 L260 20 L280 0 L300 20" 
+        stroke="#ffffff" stroke-width="4" fill="none"/>
+
+  <!-- Yellow again -->
+  <path d="M300 20 L320 0 L340 20 L360 0 L380 20 L400 0" 
+        stroke="#f2a900" stroke-width="4" fill="none"/>
+
+  <!-- Red again -->
+  <path d="M400 0 L420 20 L440 0 L460 20 L480 0 L500 20" 
+        stroke="#e63946" stroke-width="4" fill="none"/>
+
+  <!-- White again -->
+  <path d="M500 20 L520 0 L540 20 L560 0 L580 20 L600 0" 
+        stroke="#ffffff" stroke-width="4" fill="none"/>
+
+  <!-- Yellow again -->
+  <path d="M600 0 L620 20 L640 0 L660 20 L680 0 L700 20" 
+        stroke="#f2a900" stroke-width="4" fill="none"/>
+
+  <!-- Red again -->
+  <path d="M700 20 L720 0 L740 20 L760 0 L780 20 L800 0"
+        stroke="#e63946" stroke-width="4" fill="none"/>
+
+  <!-- White last -->
+  <path d="M800 0 L820 20 L840 0 L860 20 L880 0 L900 20"
+        stroke="#ffffff" stroke-width="4" fill="none"/>
+
+</svg>
