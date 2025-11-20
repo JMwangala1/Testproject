@@ -1,3 +1,52 @@
+/*START OF CSS FOR OVERALL FONTS OF THE PAGE*/
+
+/* Global Typography Reset */
+body, p, li, a, input, textarea, select {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+/* Main Headings */
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    color: #222;
+    letter-spacing: 0.5px;
+}
+
+/* Section Headings */
+h2 {
+    font-weight: 600;
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Hero heading stays as is — it already uses gradient gold text */
+.hero-content h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Paragraph text */
+p {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Navigation Font */
+.nav-menu a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn,.news-btn {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+/* END OF CSS OVERALL FONT FOR THE PAGE*/
+
+
 /* CSS for scrolling behaivor */
 html {
   scroll-behavior: smooth;
@@ -366,7 +415,47 @@ html, body {
   max-width: 100%;
 }
 
-/* Grid layout for form */
+/* --- Layout Wrappers --- */
+
+/* Outer wrapper for spacing/background context if needed */
+.contact-wrapper {
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* The main card container */
+.contact-section {
+  display: flex; /* Side-by-side layout */
+  justify-content: space-between;
+  align-items: stretch; /* Ensures image matches form height */
+  gap: 0; /* Gap handled by internal padding if needed, or set to 0 to flush image */
+  
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden; /* Keeps image inside border-radius */
+}
+
+/* --- Left Side: Form Area --- */
+.form-side {
+  flex: 0 0 50%; /* Force 50% */
+  padding: 40px 60px;
+  box-sizing: border-box;
+}
+
+/* Form Header */
+.contact-section h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Internal Form Grid */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -378,7 +467,7 @@ html, body {
   flex-direction: column;
 }
 
-/* Make specific fields full width (textarea, button) */
+/* Full width fields */
 .form-group.full {
   grid-column: 1 / -1;
 }
@@ -392,31 +481,72 @@ html, body {
   border-radius: 8px;
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
-  border-width: 2px;
+  border-width: 1px; /* Reduced slightly for cleaner look */
 }
 
 /* Button full width */
+/* Button full width - ONLY inside the contact form */
 .contact-section .btn {
   margin-top: 20px;
   width: 100%;
-  grid-column: 1 / -1;
+  padding: 15px;
+  background-color: #f7c04a; 
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-/* Mobile view — stack everything */
-@media (max-width: 700px) {
-  .form-grid {
-    grid-template-columns: 1fr;
+/* Red star for required fields */
+label.required::after {
+  content: " *";
+  color: red;
+  font-weight: bold;
+}
+
+/* --- Right Side: Image Area --- */
+/* 1. The container for the image */
+.contact-image {
+  flex: 0 0 50%;       /* Keep strictly 50% width */
+  position: relative;  /* This is crucial! It creates a boundary. */
+  /* No height or min-height here. We let the Form define the height. */
+}
+
+/* 2. The image itself */
+.contact-image img {
+  position: absolute;  /* Takes the image "out of the flow" */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;        /* Fill the container exactly */
+  object-fit: cover;   /* Crop the image so it doesn't squish */
+}
+
+/* --- Responsive Design --- */
+
+/* Tablet and Mobile: Stack Form and Image */
+@media (max-width: 900px) {
+  .contact-section {
+    flex-direction: column-reverse; /* Image on top or bottom? Standard is form on top, image bottom. remove -reverse if you want image bottom */
+  }
+
+  .contact-image {
+    height: 300px; /* Limit image height on mobile */
   }
 }
 
-.contact-section {
-  width: 60%;
-  margin-left: 20%;      /* centers the section */
-  margin-right: 20%;
-  padding: 30px;          /* spacing inside */
-  background: #fff;       /* optional, can remove if you want */
-  border-radius: 12px;    /* optional */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* optional */
-  box-sizing: border-box;
+/* Mobile: Stack Form Inputs */
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-section {
+    width: 100%; /* Full width on mobile */
+  }
+  
+  .form-side {
+    padding: 20px;
+  }
 }
-

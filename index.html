@@ -103,13 +103,13 @@
     <!--This is Careers Section-->
      <section>
         <h2>Join Our Team</h2>
-        <p>If you're looking to join the team send your cv to jobs@saint-maneventsandcatering</p>
+        <p>If you're looking to join the team send your cv to <a href="jobs@saint-manevetsandcatering.com">jobs@saint-maneventsandcatering</a></p>
      </section>
 
         <!--This is Contacts Section-->
       <section>
         <h2>Book your Event with us</h2>
-        <p>If you have any event inquiry, you can always <br>
+        <p>If you have any event inquiry, <br>you can always 
             reach us through our mail @<a href="mwangalajohn3@gmail.com">mwangalajohn3@gmail.com</a><br>
             Or fill the booking form below. <br> <br>
             Thank You for choosing us.
@@ -117,66 +117,80 @@
       </section>
     </main>
 
-    <!-- Contact / Booking Form -->
-<section id="contact-form" class="contact-section">
-  <h2>Book Your Event Here</h2>
+<!-- Contact / Booking Form -->
+<section id="contact-form" class="contact-wrapper">
 
-  <!-- Replace ACTION when you create your Formspree/Netlify endpoint -->
-  <form id="bookingForm" action="#" method="POST" novalidate>
+  <div class="contact-section">
 
-  <div class="form-grid">
+    <!-- LEFT COLUMN: Title and Form -->
+    <div class="form-side">
+      
+      <h2>Book Your Event Here</h2>
 
-    <div class="form-group">
-    <label for="name">Full name</label>
-    <input id="name" name="name" type="text" required>
+      <form id="bookingForm" action="#" method="POST" novalidate>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="name" class="required">Full name</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email">
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="required">Phone</label>
+            <input id="phone" name="phone" type="tel" required>
+          </div>
+
+          <div class="form-group">
+            <label for="eventType" class="required">Event type</label>
+            <select id="eventType" name="eventType" required>
+              <option value="">Choose...</option>
+              <option>Wedding</option>
+              <option>Birthday</option>
+              <option>Corporate</option>
+              <option>Private Party</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="eventDate" class="required">Event date (approx)</label>
+            <input id="eventDate" name="eventDate" type="date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="guests" class="required">Estimated guests</label>
+            <input id="guests" name="guests" type="number" min="1" required>
+          </div>
+
+          <div class="form-group full">
+            <label for="message">Message / Special requests</label>
+            <textarea id="message" name="message" rows="5"></textarea>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn">BOOK THE EVENT</button>
+
+        <div id="formMessage" role="status" aria-live="polite"></div>
+
+      </form>
+    </div> <!-- End form-side -->
+
+    <!-- RIGHT COLUMN: Image -->
+    <div class="contact-image">
+      <img src="Images/form-pic.jpg" alt="form">
     </div>
 
-    <div class="form-group">
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" required>
-    </div>
+  </div> <!-- End contact-section -->
 
-    <div class="form-group">
-    <label for="phone">Phone</label>
-    <input id="phone" name="phone" type="tel">
-    </div>
-
-     <div class="form-group">
-    <label for="eventType">Event type</label>
-    <select id="eventType" name="eventType" required>
-      <option value="">Choose...</option>
-      <option>Wedding</option>
-      <option>Birthday</option>
-      <option>Corporate</option>
-      <option>Private Party</option>
-    </select>
-     </div>
-
-     <div class="form-group">
-    <label for="eventDate">Event date (approx)</label>
-    <input id="eventDate" name="eventDate" type="date">
-     </div>
-
-     <div class="form-group">
-    <label for="guests">Estimated guests</label>
-    <input id="guests" name="guests" type="number" min="1">
-     </div>
-
-     <div class="form-group full">
-    <label for="message">Message / Special requests</label>
-    <textarea id="message" name="message" rows="5"></textarea>
-    </div>
-
-  </div>
-
-    <button type="submit" class="btn">BOOK THE EVENT</button>
-
-    <div id="formMessage" role="status" aria-live="polite"></div>
-  </form>
 </section>
 
-
-    <!--This is Footers-->
+ <!--This is Footers-->
     <br>
     <br>
     <footer>
