@@ -331,48 +331,26 @@ h2 {
   transform: scale(1.05);
 }
 
-/* Product Gallery */
-.product-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-}
+/* PRODUCTS SECTION CSS */
 
-.product-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: left;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-.product-card img {
+/* --- Global Settings --- */
+html, body {
   width: 100%;
-  height: 540px;
-  object-fit: cover;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-.product-card h3 {
-  margin: 15px 0 5px;
-  color: #333;
-  font-family: 'Poppins', sans-serif;
+* {
+  box-sizing: border-box;
+  /* Removed "max-width: 100%" from here because it can break Grid layouts. 
+     We handle image width specifically below. */
 }
 
-.product-card p {
-  color: #666;
-  font-size: 0.95rem;
-  padding: 0 10px 15px;
-}
+/* --- Section Styling --- */
 #products {
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px 0;
 }
 
 #products h2 {
@@ -382,9 +360,64 @@ h2 {
   margin-bottom: 20px;
   text-transform: capitalize;
 }
+
+/* --- Gallery Grid Layout --- */
+.product-gallery {
+  /* 1. Force the width to be the full width of the SCREEN (viewport), not the container */
+  width: 100vw; 
+  
+  /* 2. Position it to break out of any centered parent constraints */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  
+  /* 3. Grid Layout settings */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 10px; /* Changed to 0 so there is no gap between the images */
+  padding: 0;
+  margin-top: 30px;
+}
+
+/* --- Card Styling --- */
+.product-card {
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: left;
+  overflow: hidden; /* Needed so the image zoom doesn't overflow the corners */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;       /* These lines ensure the */
+  flex-direction: column; /* content aligns nicely */
+}
+
+/* Hover Effect for Card (Moves up) */
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* --- Typography inside Card --- */
+.product-card h3 {
+  margin: 15px 0 5px;
+  padding: 0 15px; /* Added padding to align with text */
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+}
+
+.product-card p {
+  color: #666;
+  font-size: 0.95rem;
+  padding: 0 15px 20px;
+}
+
+/* List Styling */
 .product-card ul {
-  list-style: none;
-  padding-left: 15px;
+  list-style: disc; /* Changed to disc so bullets are visible */
+  padding-left: 35px; /* Adjusted for alignment */
+  margin: 10px 0;
   color: #444;
 }
 
@@ -392,27 +425,33 @@ h2 {
   margin-bottom: 5px;
   font-size: 0.95rem;
 }
+
+/* --- Image Styling --- */
+/* I combined your duplicate image rules here */
 .product-card img {
   width: 100%;
-  height: 640px;
+  height: 640px; /* Kept your preferred height */
   object-fit: cover;
   transition: transform 0.4s ease;
   margin-top: 0;
-  border-radius: 0;
+  display: block;
 }
 
+/* Hover Effect for Image (Zooms in) */
 .product-card:hover img {
   transform: scale(1.05);
 }
-html, body {
-  width: 100%;
-  overflow-x: hidden; /* hides horizontal scroll */
-  margin: 0;
-  padding: 0;
-}
-* {
-  box-sizing: border-box;
-  max-width: 100%;
+
+/* --- MOBILE RESPONSIVENESS --- */
+/* This makes it 1 column on phones/tablets so it's readable */
+@media (max-width: 768px) {
+  .product-gallery {
+    grid-template-columns: 1fr; 
+  }
+  
+  /* Optional: On mobile, 640px might be too tall, 
+     you can uncomment the line below to adjust it for phones: */
+  /* .product-card img { height: 300px; } */
 }
 
 /* --- Layout Wrappers --- */
@@ -439,6 +478,7 @@ html, body {
   border-radius: 0;
   box-shadow: none;
   overflow: hidden; /* Keeps image inside border-radius */
+  
 }
 
 /* --- Left Side: Form Area --- */
@@ -511,6 +551,7 @@ label.required::after {
   flex: 0 0 50%;       /* Keep strictly 50% width */
   position: relative;  /* This is crucial! It creates a boundary. */
   /* No height or min-height here. We let the Form define the height. */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* 2. The image itself */
@@ -521,6 +562,12 @@ label.required::after {
   width: 100%;
   height: 100%;        /* Fill the container exactly */
   object-fit: cover;   /* Crop the image so it doesn't squish */
+  transition: transform 0.4s ease;
+}
+
+.contact-image:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 /* --- Responsive Design --- */
