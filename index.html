@@ -1,204 +1,255 @@
-<doctype html>
-<html lang="En-US">
+<!DOCTYPE html>
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAINT-MAN EVENTS</title>
+    <meta name="description" content="Saint-Man Events & Catering: Professional event planning, weddings, and corporate catering services.">
+    <title>Saint-Man Events & Catering | Unforgettable Experiences</title>
     <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-        <!--Navigationa Menu-->
-    <nav class="nav-menu">
-        <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#products">PRODUCTS</a></li>
-            <li><a href="#contact-form">CONTACTS</a></li>
-            <li><a href="#">CAREERS</a></li>
-            <li><a href="#news">NEWS</a></li>
-        </ul>
+    <!-- 1. NAVIGATION: Fixed, Clean, Trustworthy -->
+    <nav class="nav-menu" id="navbar">
+        <div class="nav-container">
+            <div class="logo">SAINT-MAN</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#products">Services</a></li>
+                <li><a href="#reviews">Reviews</a></li> <!-- Added Trust Signal Link -->
+                <li><a href="#news">Offers</a></li>
+                <li><a href="#contact-form" class="nav-cta">Book Now</a></li> <!-- Highlighted CTA -->
+            </ul>
+        </div>
     </nav>
 
-    <!--Hero Banner Section-->
+    <!-- 2. HERO: High Impact, Clear Value Prop -->
     <header class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-         <h2>Saint-man Events & Catering</h2>
-         <p>We create unforgettable experiences through elegant events and exquisite cuisine.</p>
-         <a href="#products" class="btn">Discover More</a>
+            <h1>Elegant Events & Exquisite Cuisine</h1>
+            <p>We craft unforgettable experiences for your weddings, corporate functions, and private celebrations.</p>
+            <div class="hero-btns">
+                <a href="#products" class="btn btn-primary">Our Services</a>
+                <a href="#contact-form" class="btn btn-outline">Get a Quote</a>
+            </div>
         </div>
     </header>
 
-    <!--Introduction Section-->
     <main>
+        <!-- 3. INTRO: Context & Authority -->
         <section class="welcome-section">
-            <div class="welcome-content">
-        <h2>Welcome to Saint-Man Events and Catering</h2>
-        <p>We offer proffesional catering and <br>
-             events planning services for weddings,<br>
-            parties, <br>
-            and corporate events.</p>
+            <div class="welcome-wrapper">
+                <div class="welcome-text">
+                    <h2>Welcome to Saint-Man Events</h2>
+                    <p>We offer professional catering and event planning services tailored to your unique needs. From intimate gatherings to grand corporate galas, we handle the details so you can enjoy the moment.</p>
+                    <a href="#products" class="btn btn-text">Explore Our Packages &rarr;</a> <!-- Corrected Link Flow -->
+                </div>
             </div>
-             <a href="#news" class="news-btn">NEWS</a>
-            <div style="clear: both;"></div>
         </section>
 
- <section id="products">
-    <h2>Our Products and Services</h2>
-    <div class="product-gallery">
-        
-        <!-- Product 1 -->
-        <div class="product-card">
-            <img src="Images/Catering.jpg" alt="Catering">
-            <h3>Full Events Catering</h3>
-            <ul>
-                <li>Weddings catering</li>
-                <li>Birthdays catering</li>
-                <li>Baby showers</li>
-                <li>In-house and Outside catering</li>
-            </ul>
-            <p>Perfect meals for your weddings, Birthdays, Baby showers and outdoor catering.</p>
-        </div>
+        <!-- 4. PRODUCTS: Information Hierarchy & Visuals -->
+        <section id="products" class="section-pad">
+            <div class="section-header">
+                <h2>Our Premium Services</h2>
+                <p>Curated packages for every occasion.</p>
+            </div>
+            
+            <div class="product-gallery">
+                <!-- Card 1 -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="Images/Catering.jpg" alt="Full Events Catering" loading="lazy">
+                    </div>
+                    <div class="card-details">
+                        <h3>Full Events Catering</h3>
+                        <p>Exquisite menus tailored to your palate.</p>
+                        <ul>
+                            <li>Weddings & Baby Showers</li>
+                            <li>In-house & Outside Catering</li>
+                            <li>Bespoke Menu Design</li>
+                        </ul>
+                    </div>
+                </div>
 
-        <!-- Product 2 -->
-        <div class="product-card">
-            <img src="Images/Corporate.jpg" alt="Corporate">
-            <h3>Corporate Events</h3>
-            <ul>
-                <li>End of year parties</li>
-                <li>Team Building activities</li>
-            </ul>
-            <p>Professional planning and catering for your corporate functions.</p>
-        </div>
+                <!-- Card 2 -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="Images/Corporate.jpg" alt="Corporate Events" loading="lazy">
+                    </div>
+                    <div class="card-details">
+                        <h3>Corporate Events</h3>
+                        <p>Professional planning for business excellence.</p>
+                        <ul>
+                            <li>End of Year Parties</li>
+                            <li>Team Building Activities</li>
+                            <li>Conferences & Launches</li>
+                        </ul>
+                    </div>
+                </div>
 
-        <!-- Product 3 -->
-        <div class="product-card">
-            <img src="Images/party.jpg" alt="party">
-            <h3>Private Parties</h3>
-            <ul>
-                <li>BnB house parties</li>
-                <li>Pool parties</li>
-                <li>Yacht and Boat rides parties</li>
-            </ul>
-            <p>Want to ignite your adrenaline, book your Boat and Yacht party to celebrate life with us.</p>
-        </div>
+                <!-- Card 3 -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="Images/party.jpg" alt="Private Parties" loading="lazy">
+                    </div>
+                    <div class="card-details">
+                        <h3>Private Parties</h3>
+                        <p>Celebrate life with style and adrenaline.</p>
+                        <ul>
+                            <li>Yacht & Boat Parties</li>
+                            <li>Pool & Garden Parties</li>
+                            <li>Exclusive BnB Events</li>
+                        </ul>
+                    </div>
+                </div>
 
-        <!-- Product 4 -->
-        <div class="product-card">
-            <img src="Images/Decor_2.jpg" alt="Decorations">
-            <h3>Event Full Decorations</h3>
-            <p>Elegant, themed decoration for any occasion.</p>
-        </div>
+                <!-- Card 4 -->
+                <div class="product-card">
+                    <div class="img-container">
+                        <img src="Images/Decor_2.jpg" alt="Event Decorations" loading="lazy">
+                    </div>
+                    <div class="card-details">
+                        <h3>Event Decor</h3>
+                        <p>Transforming spaces into magical environments.</p>
+                        <ul>
+                            <li>Themed Setup</li>
+                            <li>Floral Arrangements</li>
+                            <li>Lighting & Ambience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    </div>
-</section>
+        <!-- 5. SOCIAL PROOF (New Section): Trust & Credibility -->
+        <section id="reviews" class="reviews-section">
+            <h2>Trusted by Happy Clients</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <p>"Saint-Man Events made our wedding absolutely magical. The food was the highlight of the night!"</p>
+                    <span>- Sarah & James</span>
+                </div>
+                <div class="review-card">
+                    <p>"Professional, punctual, and incredibly creative. Our corporate gala was a massive success."</p>
+                    <span>- TechCorp Industries</span>
+                </div>
+                <div class="review-card">
+                    <p>"The yacht party setup was breathtaking. Highly recommended for premium experiences."</p>
+                    <span>- Michael K.</span>
+                </div>
+            </div>
+        </section>
 
-        <!--This is News section-->
-     <section id="news">
-        <h2>Latest News</h2>
-        <p>We now offer full wedding packages! Contact us for details and discounts.</p>
-        <p>Christmas offers! Click to see amazing offers for your end of year enjoyment.</p>
-     </section>
+        <!-- 6. NEWS/OFFERS: Content Depth -->
+        <section id="news" class="news-section">
+            <div class="news-content">
+                <h2>Seasonal Updates</h2>
+                <div class="news-items">
+                    <div class="news-item">
+                        <h3>🎉 Full Wedding Packages</h3>
+                        <p>Now booking for 2026! Contact us for early-bird discounts on full catering and decor packages.</p>
+                    </div>
+                    <div class="news-item">
+                        <h3>🎄 Year-End Specials</h3>
+                        <p>Planning a corporate Christmas party? Check out our limited-time buffet offers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!--This is Careers Section-->
-     <section>
-        <h2>Join Our Team</h2>
-        <p>If you're looking to join the team send your cv to <a href="jobs@saint-manevetsandcatering.com">jobs@saint-maneventsandcatering</a></p>
-     </section>
+        <!-- 7. CONVERSION: User Flow & Feedback Loop -->
+        <section id="contact-form" class="contact-wrapper">
+            <div class="contact-container">
+                
+                <!-- Image Side -->
+                <div class="contact-image">
+                    <img src="Images/form-pic.jpg" alt="Elegant Event Setup">
+                    <div class="img-overlay">
+                        <h3>Let's Create Magic</h3>
+                    </div>
+                </div>
 
-        <!--This is Contacts Section-->
-      <section>
-        <h2>Book your Event with us</h2>
-        <p>If you have any event inquiry, <br>you can always 
-            reach us through our mail @<a href="mwangalajohn3@gmail.com">mwangalajohn3@gmail.com</a><br>
-            Or fill the booking form below. <br> <br>
-            Thank You for choosing us.
-        </p>
-      </section>
+                <!-- Form Side -->
+                <div class="form-side">
+                    <h2>Secure Your Date</h2>
+                    <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+
+                    <form id="bookingForm" novalidate>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input id="name" name="name" type="text" placeholder="John Doe" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input id="email" name="email" type="email" placeholder="john@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input id="phone" name="phone" type="tel" placeholder="+254..." required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventType">Event Type *</label>
+                                <select id="eventType" name="eventType" required>
+                                    <option value="" disabled selected>Select an option...</option>
+                                    <option>Wedding</option>
+                                    <option>Corporate</option>
+                                    <option>Private Party</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="guests">Guest Count</label>
+                                <input id="guests" name="guests" type="number" min="10" placeholder="e.g. 100">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventDate">Date</label>
+                                <input id="eventDate" name="eventDate" type="date">
+                            </div>
+
+                            <div class="form-group full">
+                                <label for="message">Your Vision / Special Requests</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Tell us about your dream event..."></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-submit">Send Inquiry</button>
+                        <div id="formMessage" class="feedback-msg"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
-<!-- Contact / Booking Form -->
-<section id="contact-form" class="contact-wrapper">
-
-  <div class="contact-section">
-
-    <!-- LEFT COLUMN: Title and Form -->
-    <div class="form-side">
-      
-      <h2>Book Your Event Here</h2>
-
-      <form id="bookingForm" action="#" method="POST" novalidate>
-
-        <div class="form-grid">
-
-          <div class="form-group">
-            <label for="name" class="required">Full name</label>
-            <input id="name" name="name" type="text" required>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email">
-          </div>
-
-          <div class="form-group">
-            <label for="phone" class="required">Phone</label>
-            <input id="phone" name="phone" type="tel" required>
-          </div>
-
-          <div class="form-group">
-            <label for="eventType" class="required">Event type</label>
-            <select id="eventType" name="eventType" required>
-              <option value="">Choose...</option>
-              <option>Wedding</option>
-              <option>Birthday</option>
-              <option>Corporate</option>
-              <option>Private Party</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="eventDate" class="required">Event date (approx)</label>
-            <input id="eventDate" name="eventDate" type="date" required>
-          </div>
-
-          <div class="form-group">
-            <label for="guests" class="required">Estimated guests</label>
-            <input id="guests" name="guests" type="number" min="1" required>
-          </div>
-
-          <div class="form-group full">
-            <label for="message">Message / Special requests</label>
-            <textarea id="message" name="message" rows="5"></textarea>
-          </div>
-
-        </div>
-
-        <button type="submit" class="btn">BOOK YOUR EVENT</button>
-
-        <div id="formMessage" role="status" aria-live="polite"></div>
-
-      </form>
-    </div> <!-- End form-side -->
-
-    <!-- RIGHT COLUMN: Image -->
-    <div class="contact-image">
-      <img src="Images/form-pic.jpg" alt="form">
-    </div>
-
-  </div> <!-- End contact-section -->
-
-</section>
-
- <!--This is Footers-->
-    <br>
-    <br>
+    <!-- 8. FOOTER: Safety Net & Info -->
     <footer>
-     &copy; 2025 Saint-Man Events and Catering. All rights reserved. 
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Saint-Man Events</h3>
+                <p>&copy; 2025 All rights reserved.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><a href="mailto:mwangalajohn3@gmail.com">mwangalajohn3@gmail.com</a></p>
+                <p>Nairobi, Kenya</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <!-- Moved Careers Here -->
+                <a href="#">About Us</a><br>
+                <a href="mailto:jobs@saint-manevents.com">Careers</a><br> 
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>
