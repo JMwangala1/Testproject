@@ -312,7 +312,7 @@ footer { background: #f9f9f9; padding: 60px 20px; border-top: 1px solid #eee; ma
     
     /* Fix for vertical alignment issues */
     display: block;
-    margin-top: 35px;
+    margin-top: 20px;
 }
 
 /* 3. Adjust Navbar padding so the logo doesn't touch the edges */
