@@ -10,42 +10,67 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// 2. Form Submission Simulation (Measurement & Feedback Loop)
+// REAL FORMSPREE INTEGRATION
 const bookingForm = document.getElementById('bookingForm');
 const msgBox = document.getElementById('formMessage');
 
 if(bookingForm) {
-    bookingForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Stop actual page reload
+    bookingForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Stop the page from reloading
         
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerText;
 
-        // Change button state to indicate processing (Technical Direction)
+        // 1. Visual Feedback: Show "Sending..."
         submitBtn.innerText = 'Sending...';
         submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+        msgBox.innerHTML = ''; // Clear previous messages
 
-        // Simulate network request delay (2 seconds)
+        // 2. Gather Data and Send to Formspree
+        const formData = new FormData(this);
+        
+        try {
+            const response = await fetch(this.action, {
+                method: this.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            // 3. Handle Success
+            if (response.ok) {
+                msgBox.innerHTML = 'Thank you! Your inquiry has been sent successfully.';
+                msgBox.className = 'feedback-msg success'; // Ensure CSS styles this green
+                msgBox.style.color = 'green';
+                
+                this.reset(); // Clear the form fields
+                
+                submitBtn.innerText = 'Sent ✔';
+                submitBtn.style.backgroundColor = 'green';
+            } 
+            // 4. Handle Errors (Validation or Network)
+            else {
+                const data = await response.json();
+                if (Object.hasOwn(data, 'errors')) {
+                    msgBox.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                } else {
+                    msgBox.innerHTML = "Oops! There was a problem submitting your form.";
+                }
+                msgBox.style.color = 'red';
+            }
+        } catch (error) {
+            msgBox.innerHTML = "Network error. Please try again later.";
+            msgBox.style.color = 'red';
+        }
+
+        // 5. Reset Button after delay
         setTimeout(() => {
-            // Success Feedback
-            msgBox.innerHTML = 'Thank you! Your request has been sent securely. We will contact you shortly.';
-            msgBox.classList.add('success');
-            
-            // Reset form
-            bookingForm.reset();
-            
-            // Restore button
-            submitBtn.innerText = 'Sent ✔';
-            submitBtn.style.backgroundColor = 'green';
-            
-            // Reset button style after 3 seconds
-            setTimeout(() => {
-                submitBtn.innerText = originalText;
-                submitBtn.disabled = false;
-                submitBtn.style.backgroundColor = '';
-                msgBox.innerHTML = '';
-            }, 5000);
-            
-        }, 1500);
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+            submitBtn.style.backgroundColor = ''; // Reverts to CSS default
+        }, 5000);
     });
 }

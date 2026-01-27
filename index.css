@@ -288,3 +288,45 @@ footer { background: #f9f9f9; padding: 60px 20px; border-top: 1px solid #eee; ma
     .hero-btns { flex-direction: column; }
     .btn { width: 100%; margin-bottom: 10px; text-align: center; }
 }
+
+/* 1. Allow the container to grow */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Ensure the container is tall enough for a big logo */
+     max-height: 70px; 
+}
+
+/* 2. Make the Logo BIGGER */
+.logo-img {
+    /* Increase this value until it looks perfect to you */
+    height: 200px; 
+    width: auto; /* Keeps the aspect ratio correct */
+    
+    /* This ensures it doesn't look flat */
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); 
+    
+    /* Smooth transition if you resize the window */
+    transition: height 0.3s ease;
+    
+    /* Fix for vertical alignment issues */
+    display: block;
+    margin-top: 35px;
+}
+
+/* 3. Adjust Navbar padding so the logo doesn't touch the edges */
+.nav-menu {
+    padding: 10px 0; /* Reduced padding because the logo provides the height now */
+}
+
+/* 4. IMPORTANT: Prevent it from breaking on Mobile Phones */
+@media (max-width: 900px) {
+    .logo-img {
+        /* On phones, 120px is too big, so we shrink it slightly */
+        height: 140px; 
+    }
+    .nav-container {
+    max-height: 80px;
+    }
+}
