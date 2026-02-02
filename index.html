@@ -23,21 +23,34 @@
 </head>
 <body>
 
-    <!-- 1. NAVIGATION: Fixed, Clean, Trustworthy -->
-    <nav class="nav-menu" id="navbar">
-        <div class="nav-container">
-           <a href="#" class="logo-container">
-    <img src="Images/New_logo.png" alt="Saint-Man Events Logo" class="logo-img">
-</a>
+<nav class="nav-menu" id="navbar">
+    <div class="nav-container">
+        
+        <!-- LOGO -->
+        <a href="#" class="logo-box">
+            <img src="Images/New_logo.png" alt="Logo" class="logo-img">
+        </a>
+
+        <!-- HAMBURGER -->
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+
+        <!-- MENU BAR -->
+        <div class="menu-bar">
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#products">Services</a></li>
-                <li><a href="#reviews">Reviews</a></li> <!-- Added Trust Signal Link -->
-                <li><a href="#news">Offers</a></li>
-                <li><a href="#contact-form" class="nav-cta">Book Now</a></li> <!-- Highlighted CTA -->
+                <!-- 'active' makes this White -->
+                <li><a href="#" class="nav-item active">Home</a></li>
+                <li><a href="#welcome" class="nav-item">About</a></li>
+                <li><a href="#products" class="nav-item">Services</a></li>
+                <li><a href="#reviews" class="nav-item">Reviews</a></li>
+                <li><a href="#news" class="nav-item">Offers</a></li>
+                <!-- 'cta-item' makes this White -->
+                <li><a href="#contact-form" class="nav-item cta-item">Book Now</a></li>
             </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- 2. HERO: High Impact, Clear Value Prop -->
     <header class="hero">
@@ -54,7 +67,7 @@
 
     <main>
         <!-- 3. INTRO: Context & Authority -->
-        <section class="welcome-section">
+        <section class="welcome-section" id="welcome">
             <div class="welcome-wrapper">
                 <div class="welcome-text">
                     <h2>Welcome to Saint-Man Events</h2>
@@ -163,7 +176,7 @@
                         <h3>Seafoods Supplies</h3>
                         <p>Providing a wide variety of Seafoods for both domestic use and for your event.</p>
                         <ul>
-                            <li>Most type of salt/fresh water fish</li>
+                            <li>Salt & Fresh water fish</li>
                             <li>Prawns and Lobsters</li>
                             <li>Kalamari and Lobusts...etc</li>
                         </ul>

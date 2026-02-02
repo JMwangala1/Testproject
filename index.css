@@ -1,8 +1,10 @@
 /* --- 1. GLOBAL VARIABLES & RESET --- */
 :root {
-    --gold: #f7c04a;
-    --gold-hover: #e0ac3c;
+    --gold-start: #E6C86E;
+    --gold-end: #D4AF37;
+    --gold-hover: #B59020;
     --dark: #222;
+    --white: #fff;
     --grey: #f4f4f4;
     --text: #444;
     --font-head: 'Playfair Display', serif;
@@ -18,58 +20,122 @@ body {
     color: var(--text);
     line-height: 1.6;
     background-color: #fff;
-    overflow-x: hidden; /* Prevents side scroll */
+    overflow-x: hidden;
 }
 
 h1, h2, h3 { font-family: var(--font-head); color: var(--dark); }
 a { text-decoration: none; transition: 0.3s; color: inherit; }
 ul { list-style: none; }
 
-/* --- 2. NAVIGATION --- */
+/* --- 2. NAVIGATION (Floating on Top of Image) --- */
 .nav-menu {
-    position: fixed;
-    top: 0;
+    /* Absolute positions it ON TOP of the Hero Image */
+    position: absolute; 
+    top: -25px; /* Pushes it down slightly so it floats like Waridi */
+    left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.95); /* Solid for readability */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    padding: 15px 0;
-    transition: all 0.3s ease;
+    background: transparent; /* No White Background */
+    padding: 0;
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1400px; /* Wide container to push Logo/Menu to edges */
     margin: 0 auto;
+    padding: 0 40px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
+    justify-content: space-between; /* Logo Left, Menu Right */
+    align-items: center; /* Vertically center them */
 }
 
-.logo {
-    font-family: var(--font-head);
+/* LOGO STYLING (Big & Visible) */
+.logo-box {
+    display: block;
+    /* Ensure it has space */
+    flex-shrink: 0;
+}
+
+.logo-img {
+    height: 180px; /* Big size as requested */
+    width: auto;
+    display: block;
+    /* Drop shadow to make it pop off the background image */
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+    transition: 0.3s;
+}
+
+/* --- 3. THE MENU BAR (The Gold Strip) --- */
+.menu-bar {
+    /* The Gold Gradient Background */
+    background: linear-gradient(90deg, var(--gold-start), var(--gold-end));
+    display: flex;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    /* In Waridi, the bar aligns to the right */
+}
+
+.nav-links {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+/* Individual Links */
+.nav-item {
+    display: block;
+    padding: 20px 40px; /* Wide buttons */
+    color: #fff;
     font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--dark);
-    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+
 }
 
-.nav-links { display: flex; align-items: center; gap: 30px; }
-.nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--dark); }
-.nav-links a:hover { color: var(--gold); }
-
-/* Special CTA in Menu */
-.nav-cta {
-    background: var(--gold);
-    color: #fff !important;
-    padding: 10px 20px;
-    border-radius: 50px;
+/* --- 3. THE MENU BAR (Border Added) --- */
+.menu-bar {
+    /* The Gold Gradient Background */
+    background: linear-gradient(90deg, var(--gold-start), var(--gold-end));
+    display: flex;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    
+    /* NEW: Outside Gold Border (Using a slightly darker shade for visibility) */
+    border: 1px solid #C5A028; 
 }
-.nav-cta:hover { background: var(--gold-hover); transform: translateY(-2px); }
 
-/* --- 3. HERO SECTION --- */
+/* "Home" Button - White Background (Like Waridi) */
+.nav-item.active {
+    background: #fff;
+    color: #000; /* Black text */
+}
+
+/* "Book Now" Button - White Background (Like Waridi 'Email Now') */
+.cta-item {
+    background: #fff;
+    color: #000; /* Black text */
+    font-weight: 800;
+}
+
+/* Hover Effects */
+.nav-item:hover {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+/* UPDATED HOVER EFFECTS */
+.nav-item:hover,
+.cta-item:hover {
+    background: #fff;  /* Button turns White */
+    color: #000;       /* Text turns Black */
+    cursor: pointer;
+}
+
+/* --- 4. HERO SECTION (The Background) --- */
 .hero {
-    height: 90vh; /* High impact */
+    /* 85vh leaves 15% white space at the bottom (User Request) */
+    height: 95vh; 
+    width: 100%;
+    /* No margin top - it starts at the top of the browser */
+    margin-top: 15px;
     background: url('Images/Hero.jpg') center/cover no-repeat;
     position: relative;
     display: flex;
@@ -81,261 +147,159 @@ ul { list-style: none; }
 
 .hero-overlay {
     position: absolute; inset: 0;
-    background: rgba(0,0,0,0.5); /* Darken image for text readability */
+    background: rgba(0,0,0,0.3); /* Slight darkness for text readability */
 }
 
-.hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+.hero-content { 
+    position: relative; 
+    z-index: 2; 
+    max-width: 900px; 
+    padding: 20px; 
+    margin-top: 100px; /* Push text down so it doesn't hit the logo */
+}
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     color: #fff;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
-.hero p { font-size: 1.2rem; margin-bottom: 30px; color: #f0f0f0; }
+.hero p { 
+    font-size: 1.3rem; 
+    margin-bottom: 2.5rem; 
+    color: #f0f0f0;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
 
-.hero-btns { display: flex; gap: 15px; justify-content: center; }
+/* Hero Buttons */
+.hero-btns { display: flex; gap: 20px; justify-content: center; }
 
-/* Button Styles */
 .btn {
-    display: inline-block;
-    padding: 12px 30px;
+    padding: 15px 40px;
     border-radius: 5px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    border: 2px solid transparent;
+    text-transform: uppercase;
+    transition: 0.3s;
+    font-size: 1rem;
 }
 
-.btn-primary { background: var(--gold); color: var(--dark); }
-.btn-primary:hover { background: var(--gold-hover); }
+.btn-primary { background: var(--gold-end); color: #fff; border: 2px solid var(--gold-end); }
+.btn-primary:hover { background: #fff; color: var(--gold-end); }
 
-.btn-outline { border-color: #fff; color: #fff; }
+.btn-outline { border: 2px solid #fff; color: #fff; }
 .btn-outline:hover { background: #fff; color: var(--dark); }
 
-.btn-text { color: var(--gold); font-weight: 700; padding: 10px 0; }
-.btn-text:hover { color: var(--gold-hover); padding-left: 5px; }
 
-/* --- 4. INTRO SECTION --- */
+/* --- 5. SECTIONS GENERAL --- */
+section { margin-bottom: 0; } 
+
+/* Welcome Section */
 .welcome-section {
-    padding: 80px 20px;
-    background: url('Images/wedding.jpg') center/cover fixed; /* Parallax effect */
+    padding: 100px 20px;
+    background: url('Images/wedding.jpg') center/cover fixed;
     position: relative;
 }
-
-/* Create a white box over the image */
-.welcome-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: flex-start; /* Align box to left */
-}
-
+.welcome-wrapper { max-width: 1200px; margin: 0 auto; }
 .welcome-text {
     background: rgba(255, 255, 255, 0.95);
-    padding: 50px;
-    max-width: 600px;
-    border-left: 5px solid var(--gold);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 60px;
+    max-width: 650px;
+    border-left: 6px solid var(--gold-end);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
-.welcome-text h2 { font-size: 2.2rem; margin-bottom: 20px; }
-
-/* --- 5. PRODUCTS GRID --- */
-.section-pad { padding: 80px 20px; background: #fff; }
-.section-header { text-align: center; margin-bottom: 50px; }
-.section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
-
+/* Products Section */
+.section-pad { padding: 100px 20px; background: #fff; }
+.section-header { text-align: center; margin-bottom: 60px; }
 .product-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
 }
-
 .product-card {
     background: #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
     transition: transform 0.3s ease;
-    border-radius: 8px;
-    overflow: hidden;
 }
-
-.product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-
-/* Image sizing fix */
-.img-container { height: 300px; overflow: hidden; }
-.product-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
+.product-card:hover { transform: translateY(-10px); }
+.img-container { height: 280px; overflow: hidden; }
+.product-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
 .product-card:hover img { transform: scale(1.1); }
+.card-details { padding: 30px; }
+.card-details ul { margin-top: 15px; margin-left: 20px; color: #666; font-size: 0.9rem; }
 
-.card-details { padding: 25px; }
-.card-details h3 { margin-bottom: 10px; font-size: 1.3rem; }
-.card-details ul { margin-top: 15px; padding-left: 20px; list-style: disc; color: #666; font-size: 0.9rem; }
+/* Reviews */
+.reviews-section { background: var(--grey); padding: 80px 20px; text-align: center; }
+.reviews-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
+.review-card { background: #fff; padding: 40px; max-width: 400px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
-/* --- 6. TESTIMONIALS (Trust) --- */
-.reviews-section {
-    background: var(--grey);
-    padding: 80px 20px;
-    text-align: center;
-}
-.reviews-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 40px auto 0;
-}
-.review-card {
-    background: #fff;
-    padding: 30px;
-    flex: 1;
-    min-width: 280px;
-    max-width: 350px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-.review-card p { font-style: italic; color: #555; margin-bottom: 15px; }
-.review-card span { font-weight: 700; color: var(--gold); }
+/* News */
+.news-section { background: var(--dark); color: #fff; padding: 80px 20px; text-align: center; }
+.news-item { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 8px; margin: 10px; width: 300px; display: inline-block; vertical-align: top; }
+.news-section h2 { color: var(--gold-end); }
 
-/* --- 7. NEWS SECTION --- */
-.news-section { background: var(--dark); color: #fff; padding: 60px 20px; text-align: center; }
-.news-content { max-width: 800px; margin: 0 auto; }
-.news-section h2 { color: var(--gold); margin-bottom: 30px; }
-.news-items { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.news-item { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; flex: 1; min-width: 280px; }
-.news-item h3 { color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
-.news-item p { color: #ccc; font-size: 0.9rem; }
-
-/* --- 8. CONTACT FORM --- */
-.contact-wrapper { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-.contact-container {
-    display: flex;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    background: #fff;
-}
-
-.contact-image { flex: 1; position: relative; min-height: 500px; }
+/* Contact */
+.contact-wrapper { padding: 100px 20px; }
+.contact-container { display: flex; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; background: #fff; max-width: 1200px; margin: 0 auto; }
+.contact-image { flex: 1; position: relative; min-height: 600px; }
 .contact-image img { width: 100%; height: 100%; object-fit: cover; }
-.contact-image .img-overlay {
-    position: absolute; bottom: 0; left: 0; width: 100%;
-    padding: 30px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    color: #fff;
-}
-
-.form-side { flex: 1; padding: 50px; background: #fff; }
-.form-side h2 { margin-bottom: 10px; }
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 30px;
-}
-.form-group { display: flex; flex-direction: column; }
+.form-side { flex: 1; padding: 60px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
 .form-group.full { grid-column: 1 / -1; }
+label { display: block; margin-bottom: 5px; font-weight: 600; color: #666; }
+input, select, textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+.btn-submit { width: 100%; margin-top: 20px; background: var(--dark); color: #fff; border: none; padding: 18px; cursor: pointer; font-size: 1rem; font-weight: bold; }
 
-label { font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: #666; }
-input, select, textarea {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: inherit;
-    transition: 0.3s;
+/* Footer */
+footer { background: #f9f9f9; padding: 80px 20px; margin-top: 60px; }
+.footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; }
+
+/* --- 6. MOBILE RESPONSIVENESS --- */
+.hamburger { display: none; cursor: pointer; z-index: 2000; }
+.hamburger span { display: block; width: 30px; height: 3px; background: #fff; margin: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+
+@media (max-width: 1000px) {
+    .nav-container { padding: 0 20px; }
+    .logo-img { height: 80px; }
+    .hero h1 { font-size: 2.8rem; }
 }
-input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
 
-.btn-submit { width: 100%; margin-top: 20px; background: var(--dark); color: #fff; border: none; }
-.btn-submit:hover { background: var(--gold); }
-
-/* Form Feedback */
-.feedback-msg { margin-top: 15px; font-weight: 600; text-align: center; }
-.feedback-msg.success { color: green; }
-.feedback-msg.error { color: red; }
-
-/* --- 9. FOOTER --- */
-footer { background: #f9f9f9; padding: 60px 20px; border-top: 1px solid #eee; margin-top: 0; }
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-}
-.footer-col h3, .footer-col h4 { margin-bottom: 20px; color: var(--dark); font-size: 1.1rem; }
-.footer-col p, .footer-col a { color: #666; font-size: 0.9rem; margin-bottom: 10px; display: block; }
-.footer-col a:hover { color: var(--gold); }
-
-/* --- 10. MOBILE RESPONSIVENESS --- */
 @media (max-width: 900px) {
-    .nav-links { display: none; } /* Simplified for this demo - normally use hamburger */
-    .hero h1 { font-size: 2.5rem; }
+    .hamburger { display: block; }
+    
+    /* Mobile Menu Dropdown */
+    .menu-bar {
+        position: fixed;
+        top: 0; 
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        flex-direction: column;
+        background: var(--dark); /* Dark background for mobile */
+        transition: 0.4s;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        padding-top: 100px;
+    }
+    .menu-bar.active { right: 0; }
+    
+    .nav-links { flex-direction: column; width: 100%; }
+    .nav-item { 
+        text-align: center; 
+        border-bottom: 1px solid rgba(255,255,255,0.1); 
+        border-right: none; 
+        padding: 20px;
+    }
+    .nav-item.active, .cta-item {
+        background: transparent;
+        color: var(--gold-start);
+    }
+    
     .contact-container { flex-direction: column-reverse; }
-    .contact-image { height: 250px; min-height: auto; }
-    .form-side { padding: 30px; }
-}
-
-@media (max-width: 600px) {
     .form-grid { grid-template-columns: 1fr; }
-    .hero-btns { flex-direction: column; }
-    .btn { width: 100%; margin-bottom: 10px; text-align: center; }
-}
-
-/* 1. Allow the container to grow */
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* Ensure the container is tall enough for a big logo */
-     max-height: 70px; 
-}
-
-/* 2. Make the Logo BIGGER */
-.logo-img {
-    /* Increase this value until it looks perfect to you */
-    height: 200px; 
-    width: auto; /* Keeps the aspect ratio correct */
-    
-    /* This ensures it doesn't look flat */
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); 
-    
-    /* Smooth transition if you resize the window */
-    transition: height 0.3s ease;
-    
-    /* Fix for vertical alignment issues */
-    display: block;
-    margin-top: 20px;
-}
-
-/* 3. Adjust Navbar padding so the logo doesn't touch the edges */
-.nav-menu {
-    padding: 10px 0; /* Reduced padding because the logo provides the height now */
-}
-
-/* 4. IMPORTANT: Prevent it from breaking on Mobile Phones */
-@media (max-width: 900px) {
-    .logo-img {
-        /* On phones, 120px is too big, so we shrink it slightly */
-        height: 140px; 
-    }
-    .nav-container {
-    max-height: 80px;
-    }
-}
-
-/* Add this to your existing img rules */
-img {
-    max-width: 100%;
-    display: block;
-    /* Hardware Acceleration: Tells the GPU to handle the image rendering */
-    transform: translateZ(0); 
-    backface-visibility: hidden;
 }

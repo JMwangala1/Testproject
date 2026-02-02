@@ -74,3 +74,26 @@ if(bookingForm) {
         }, 5000);
     });
 }
+
+window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    // Select the item that has the 'active' class (Home)
+    const activeLink = document.querySelector('.nav-item.active');
+
+    if (window.scrollY > 50) {
+        // 1. Add Scrolled Class
+        navbar.classList.add('scrolled');
+        
+        // 2. Remove the White Box from 'Home' when scrolling
+        if(activeLink) {
+            activeLink.classList.remove('active');
+        }
+    } else {
+        // 3. Back to Top: Remove scrolled class
+        navbar.classList.remove('scrolled');
+        
+        // Optional: If you want Home to turn white again when you reach the top:
+        const homeLink = document.querySelector('.nav-links li:first-child a');
+        if(homeLink) homeLink.classList.add('active');
+    }
+});
