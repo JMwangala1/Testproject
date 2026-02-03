@@ -97,3 +97,20 @@ window.addEventListener('scroll', function() {
         if(homeLink) homeLink.classList.add('active');
     }
 });
+
+  const nav = document.querySelector('.nav-menu');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('is-sticky', window.scrollY > 80);
+  });
+
+
+  const nav = document.querySelector('.nav-menu');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 1) {
+      nav.classList.add('is-sticky');
+    } else {
+      nav.classList.remove('is-sticky');
+    }
+  });
