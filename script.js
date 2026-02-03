@@ -106,3 +106,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+/* === HERO STAGGERED ANIMATION LOGIC === */
+window.addEventListener('load', () => {
+    const hero = document.querySelector('.hero-content');
+    const h1 = hero?.querySelector('h1');
+    const p = hero?.querySelector('p');
+    const buttons = hero?.querySelectorAll('.hero-btns .btn');
+
+    if (!hero || !h1) return;
+
+    /* Split H1 into lines */
+    const lines = h1.innerHTML.split('<br>');
+    h1.innerHTML = lines.map(line => `<span>${line}</span>`).join('');
+
+    const h1Lines = h1.querySelectorAll('span');
+
+    /* Animate H1 line by line */
+    h1Lines.forEach((line, index) => {
+        setTimeout(() => {
+            line.style.opacity = '1';
+            line.style.transform = 'translateX(0)';
+        }, index * 180);
+    });
+
+    /* Animate paragraph after H1 */
+    setTimeout(() => {
+        if (p) {
+            p.style.opacity = '1';
+            p.style.transform = 'translateX(0)';
+        }
+    }, h1Lines.length * 180 + 200);
+
+    /* Animate buttons one by one */
+    buttons?.forEach((btn, index) => {
+        setTimeout(() => {
+            btn.style.opacity = '1';
+            btn.style.transform = 'translateX(0)';
+        }, h1Lines.length * 180 + 400 + index * 150);
+    });
+});

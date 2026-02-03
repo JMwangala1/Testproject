@@ -274,6 +274,52 @@ ul { list-style: none; }
     }
 }
 
+/* === STAGGERED HERO ANIMATION === */
+
+/* Initial hidden states */
+.hero h1 span,
+.hero p,
+.hero-btns .btn {
+    opacity: 0;
+    transform: translateY(-50px);
+}
+
+/* H1 line pop animation */
+.hero h1 span {
+    display: block;
+    transition: opacity 3.5s ease-out, transform 3.5s ease-out;
+}
+
+/* Paragraph slide */
+.hero p {
+    transition: opacity 2.5s ease-out, transform 2.5s ease-out;
+}
+
+/* Buttons stagger */
+.hero-btns .btn {
+    transition: opacity 1.0s ease-out, transform 1.0s ease-out;
+}
+
+/* Active states */
+.hero-animate h1 span,
+.hero-animate p,
+.hero-animate .btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero h1 span,
+    .hero p,
+    .hero-btns .btn {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+
 
 .btn-primary { background: var(--gold-end); color: #fff; border: 2px solid var(--gold-end); }
 .btn-primary:hover { background: #fff; color: var(--gold-end); }
