@@ -143,6 +143,53 @@ ul { list-style: none; }
     }
 }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    display: block;
+}
+
+@media (max-width: 768px) {
+
+    /* Hide desktop gold menu */
+    .menu-bar {
+        display: none;
+    }
+
+    /* Show hamburger */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Mobile menu overlay */
+    .menu-bar.mobile-open {
+        display: block;
+        position: absolute;
+        top: 100%;
+        right: 20px;
+        background: linear-gradient(180deg, var(--gold-start), var(--gold-end));
+        border: 1px solid #C5A028;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        z-index: 999;
+    }
+
+    .menu-bar.mobile-open .nav-links {
+        flex-direction: column;
+    }
+
+    .menu-bar.mobile-open .nav-item {
+        padding: 16px 30px;
+        text-align: center;
+    }
+}
 
 /* --- 4. HERO SECTION --- */
 .hero {
