@@ -281,7 +281,7 @@ ul { list-style: none; }
 .hero p,
 .hero-btns .btn {
     opacity: 0;
-    transform: translateY(-50px);
+    transform: translateX(-50px);
 }
 
 /* H1 line pop animation */
@@ -305,7 +305,7 @@ ul { list-style: none; }
 .hero-animate p,
 .hero-animate .btn {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
 /* Accessibility: reduce motion */
@@ -319,6 +319,70 @@ ul { list-style: none; }
     }
 }
 
+/* ===== MOBILE FULLSCREEN MENU ===== */
+.mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+    transition: all 0.9s ease;
+}
+
+/* Active State */
+.mobile-menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Disable background scroll */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Nav Links */
+.mobile-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.mobile-nav-links li {
+    margin: 20px 0;
+}
+
+.mobile-nav-links a {
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 200;
+    color: #000000;
+    transition: color 0.9s ease;
+}
+
+.mobile-nav-links a:hover {
+    color: #c9a14a; /* Gold */
+}
+
+/* Close Button */
+.close-menu {
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    font-size: 45px;
+    background: none;
+    border: none;
+    color: #c9a14a;
+    cursor: pointer;
+}
 
 
 .btn-primary { background: var(--gold-end); color: #fff; border: 2px solid var(--gold-end); }

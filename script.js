@@ -42,14 +42,31 @@ document.addEventListener('DOMContentLoaded', () => {
        MOBILE HAMBURGER MENU
     ================================= */
 
-    const hamburger = document.querySelector('.hamburger');
-    const menuBar = document.querySelector('.menu-bar');
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
 
-    if (hamburger && menuBar) {
+        /* Open Menu */
         hamburger.addEventListener('click', () => {
-            menuBar.classList.toggle('mobile-open');
+            mobileMenu.classList.add('open');
+            document.body.classList.add('menu-open');
         });
-    }
+
+        /* Close Menu (X button) */
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('menu-open');
+        });
+
+        /* Close menu when clicking any nav item */
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.classList.remove('menu-open');
+            });
+        });
+
 
     /* ================================
        FORMSPREE FORM SUBMISSION
