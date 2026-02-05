@@ -1,42 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
+           document.addEventListener('DOMContentLoaded', () => {
 
-    /* ================================
-       NAVBAR + STICKY + SCROLL EFFECTS
-    ================================= */
+        /* === SMART STICKY NAV (DESKTOP ONLY) === */
+        let lastScrollY = window.scrollY;
+        const nav = document.querySelector('.nav-menu');
 
-    const navbar = document.getElementById('navbar');
-    const navMenu = document.querySelector('.nav-menu');
-    const activeLink = document.querySelector('.nav-item.active');
+        window.addEventListener('scroll', () => {
 
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY > 50;
+            // Disable sticky logic on mobile
+            if (window.innerWidth <= 900) return;
 
-        /* Sticky nav (NO visual movement) */
-        if (navMenu) {
-            navMenu.classList.toggle('is-sticky', window.scrollY > 1);
-        }
+            const currentScroll = window.scrollY;
 
-        /* Navbar padding & shadow */
-        if (navbar) {
-            navbar.style.padding = scrolled ? '10px 0' : '15px 0';
-            navbar.style.boxShadow = scrolled
-                ? '0 2px 15px rgba(0,0,0,0.1)'
-                : '0 2px 10px rgba(0,0,0,0.05)';
+            // Add sticky state after hero
+            if (currentScroll > 100) {
+                nav.classList.add('is-sticky');
 
-            navbar.classList.toggle('scrolled', scrolled);
-        }
+                // Scroll DOWN → hide nav
+                if (currentScroll > lastScrollY) {
+                    nav.classList.add('nav-hidden');
+                } 
+                // Scroll UP → show nav
+                else {
+                    nav.classList.remove('nav-hidden');
+                }
 
-        /* Remove white HOME box on scroll */
-        if (scrolled && activeLink) {
-            activeLink.classList.remove('active');
-        }
+            } else {
+                // Back to top
+                nav.classList.remove('is-sticky', 'nav-hidden');
+            }
 
-        /* Restore HOME at top */
-        if (!scrolled) {
-            const homeLink = document.querySelector('.nav-links li:first-child');
-            if (homeLink) homeLink.classList.add('active');
-        }
-    });
+            lastScrollY = currentScroll;
+        });
+
 
     /* ================================
        MOBILE HAMBURGER MENU
