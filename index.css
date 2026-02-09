@@ -55,7 +55,7 @@ ul { list-style: none; }
 
 
 .nav-container {
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 10px 40px;
     min-height: 100px;
@@ -79,7 +79,7 @@ ul { list-style: none; }
 
 /* Shrink logo slightly when sticky */
 .nav-menu.is-sticky .logo-img {
-    height: 65px;
+    height: 150px;
 }
 
 .menu-bar {
