@@ -446,6 +446,23 @@ section { margin-bottom: 0; }
     max-width: 650px;
     border-left: 6px solid var(--gold-end);
     box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+
+    /* --- Welcome Section Link Styling --- */
+ .btn-text {
+    color: var(--gold-end);      /* Matches your #D4AF37 theme color */
+    font-weight: 700;            /* Bold text ensures the gold is readable */
+    font-size: 1rem;
+    display: inline-block;       /* Allows transform properties to work */
+    margin-top: 1rem;            /* Adds breathing room from the paragraph */
+    transition: all 0.3s ease;   /* Smooth animation for hover effects */
+}
+
+/* Interaction State */
+.btn-text:hover {
+    color: var(--gold-hover);    /* #B59020: Slightly darker gold for feedback */
+    transform: translateX(8px);  /* Subtle slide to the right indicating "Go Forward" */
+    text-decoration: underline;  /* Optional: Adds standard link accessibility */
+}
 }
 
 /* Products Section */
