@@ -13,7 +13,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { height: auto; }
 
 body {
     font-family: var(--font-body);
@@ -644,4 +644,40 @@ footer { background: #f9f9f9; padding: 80px 20px; margin-top: 60px; }
     
     .contact-container { flex-direction: column-reverse; }
     .form-grid { grid-template-columns: 1fr; }
+}
+/* =========================================
+   LUXURY ACCENT BARS (The "Waridi" Effect)
+   ========================================= */
+
+/* 1. Create the Gold Line above every H2 */
+h2::before {
+    content: "";
+    display: block;
+    width: 50px;            /* The "Icon-like" width */
+    height: 12px;            /* The thickness */
+    
+    /* We use your gradient to make it look like a piece of jewelry, not flat paint */
+    background: linear-gradient(90deg, var(--gold-start), var(--gold-end)); 
+    
+    margin-bottom: 20px;    /* Space between the line and the text */
+    border-radius: 2px;     /* Subtle rounded corners for elegance */
+    opacity: 1;
+}
+
+/* 2. Handle CENTERED Headings (Services, Reviews, News, Contact) */
+/* These parents use text-align: center, so we must center the line manually */
+.section-header h2::before,
+.reviews-section h2::before,
+.news-section h2::before {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 3. Handle LEFT-ALIGNED Headings (Welcome Section) */
+/* The Welcome text is left-aligned, so the line should naturally stay left.
+   We just ensure it doesn't move. */
+.welcome-text h2::before,
+.form-side h2::before  {
+    margin-left: 0;
+    margin-right: 0;
 }

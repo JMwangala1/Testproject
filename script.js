@@ -1,36 +1,88 @@
-           document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
-        /* === SMART STICKY NAV (DESKTOP ONLY) === */
-        let lastScrollY = window.scrollY;
-        const nav = document.querySelector('.nav-menu');
+    /* =========================================
+       1. LUXURY INERTIAL SCROLLING (LENIS)
+       This creates the "Waridi Events" glide.
+    ========================================= */
+    
+    // Initialize Lenis
+    const lenis = new Lenis({
+        duration: 1.2,       // The "weight" of the scroll (higher = smoother/slower)
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing curve
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 1,
+        smoothTouch: false,  // Keep mobile native for better feel, true for smooth
+        touchMultiplier: 2,
+    });
 
-        window.addEventListener('scroll', () => {
+    // The Animation Loop (Required for Lenis)
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
-            // Disable sticky logic on mobile
-            if (window.innerWidth <= 900) return;
+    /* =========================================
+       2. SMOOTH ANCHOR LINKS
+       Connects your menu links to the Smooth Scroll
+    ========================================= */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return; // Ignore empty links
 
-            const currentScroll = window.scrollY;
-
-            // Add sticky state after hero
-            if (currentScroll > 100) {
-                nav.classList.add('is-sticky');
-
-                // Scroll DOWN → hide nav
-                if (currentScroll > lastScrollY) {
-                    nav.classList.add('nav-hidden');
-                } 
-                // Scroll UP → show nav
-                else {
-                    nav.classList.remove('nav-hidden');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Use Lenis to scroll to the target
+                lenis.scrollTo(targetElement, {
+                    offset: -100 // Adjusts for your Sticky Navbar height
+                });
+                
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenu && mobileMenu.classList.contains('open')) {
+                    mobileMenu.classList.remove('open');
+                    document.body.classList.remove('menu-open');
                 }
-
-            } else {
-                // Back to top
-                nav.classList.remove('is-sticky', 'nav-hidden');
             }
-
-            lastScrollY = currentScroll;
         });
+    });
+
+    /* =========================================
+       3. SMART STICKY NAV (OPTIMIZED)
+    ========================================= */
+    let lastScrollY = window.scrollY;
+    const nav = document.querySelector('.nav-menu');
+
+    // We hook into the Lenis scroll event for better sync than window.scroll
+    lenis.on('scroll', (e) => {
+        // Disable sticky logic on mobile
+        if (window.innerWidth <= 900) return;
+
+        const currentScroll = e.scroll; // Lenis gives us the exact scroll position
+
+        // Add sticky state after hero
+        if (currentScroll > 100) {
+            nav.classList.add('is-sticky');
+
+            // Scroll DOWN → hide nav
+            if (currentScroll > lastScrollY) {
+                nav.classList.add('nav-hidden');
+            } 
+            // Scroll UP → show nav
+            else {
+                nav.classList.remove('nav-hidden');
+            }
+        } else {
+            // Back to top
+            nav.classList.remove('is-sticky', 'nav-hidden');
+        }
+
+        lastScrollY = currentScroll;
+    });
 
 
     /* ================================
