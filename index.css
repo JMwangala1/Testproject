@@ -928,3 +928,200 @@ body.inner-page .cta-item {
         margin: 0 auto 10px; /* Center the accent line on mobile */
     }
 }
+
+/* =========================================
+   REVIEWS CAROUSEL (Waridi Style)
+   ========================================= */
+
+.reviews-section {
+     background: #e6e6e6; /* Light grey base like Waridi */
+    padding: 100px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.reviews-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Slider Layout */
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 50px;
+    height: 300px; /* Fixed height to prevent jumping */
+}
+
+.testimonial-track-container {
+    width: 80%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.testimonial-track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none; /* Hide non-active slides */
+}
+
+.testimonial-slide.current-slide {
+    opacity: 1;
+    pointer-events: all;
+    position: relative; /* Brings it into flow */
+}
+
+/* Content Layout: Image Left, Text Right (Desktop) */
+.testimonial-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    text-align: left;
+    max-width: 1100px;
+    background: #fff;
+    padding: 60px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* 1. Client Image (Circle) */
+.client-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--gold-end); /* Fallback / Border color */
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.5rem;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* If using real images later */
+.client-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 2. Typography */
+.client-name {
+    color: var(--gold-end);
+    font-size: 1.25rem;
+    margin-bottom: 2px;
+    font-family: var(--font-head);
+}
+
+.client-role {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #999;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.quote-box p {
+    font-style: italic;
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* 3. Navigation Buttons (Arrows) */
+.slider-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #ccc;
+    padding: 10px;
+    transition: 0.3s;
+    z-index: 10;
+    transform: scale(2); 
+    margin: 0 60px;
+    color: var(--gold-end); 
+}
+
+.slider-btn:hover {
+    transform: scale(2.3); 
+    color: var(--gold-hover);
+}
+
+/* 4. Dots (Pagination) */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.carousel-dot.current-slide {
+    background: var(--gold-end);
+    transform: scale(1.2);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .testimonial-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    
+    .carousel-wrapper {
+        height: auto; /* Allow flexible height on mobile */
+    }
+    
+    .testimonial-slide {
+        position: relative; /* Stack normally on mobile to calculate height */
+        display: none;
+    }
+    
+    .testimonial-slide.current-slide {
+        display: flex;
+    }
+
+        .slider-btn {
+        margin: 0 10px; /* Bring them back close on mobile */
+        transform: scale(1.5); /* Smaller scale for small screens */
+    }
+    .reviews-container, .testimonial-content {
+        width: 100%;
+        padding: 20px;
+    }
+}
