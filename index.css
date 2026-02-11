@@ -1125,3 +1125,164 @@ body.inner-page .cta-item {
         padding: 20px;
     }
 }
+
+/* =================================================================
+   WARIDI MEGA CARD & SEAMLESS TESTIMONIALS (FINAL CONSOLIDATED)
+   ================================================================= */
+
+/* 1. THE MAIN CONTAINER (Wraps Header, Grid, & Reviews) */
+.waridi-mega-card {
+    background: #fff;
+    width: 90%;
+    max-width: 1050px; /* Optimal reading width */
+    margin: 0 auto;
+    
+    /* The "Floating" Overlap Logic */
+    position: relative;
+    z-index: 20; 
+    margin-top: -150px;   /* Pulls UP over Hero Image */
+    margin-bottom: -100px; /* Pushes DOWN over Bottom Banner */
+    
+    padding: 80px 60px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1); /* Soft Lift Shadow */
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* 2. TYPOGRAPHY & DIVIDERS */
+.mega-header h1 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    color: var(--gold-end);
+    margin-bottom: 30px;
+}
+
+.mega-intro-text p {
+    max-width: 800px;
+    margin: 40px auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+.gold-line-full {
+    border: none;
+    height: 2px;
+    background: var(--gold-end);
+    width: 100%;
+    margin: 60px 0;
+    opacity: 0.6;
+}
+
+/* 3. SERVICES GRID (Strict 2 Columns) */
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 60px 50px;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+/* 4. SEAMLESS TESTIMONIALS (No Borders/Backgrounds) */
+
+/* Override the default reviews container width/padding */
+.waridi-mega-card .reviews-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    background: transparent;
+}
+
+.waridi-mega-card .testimonial-track-container {
+    width: 100%;
+}
+
+/* The Review Item - STRIPPED DOWN (Seamless Look) */
+.waridi-mega-card .testimonial-content {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 40px; /* Space for arrows */
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    text-align: left;
+}
+
+/* Client Image & Text */
+.waridi-mega-card .client-image {
+    width: 90px;
+    height: 90px;
+    /* Keep the luxury gold ring */
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2); 
+}
+
+.waridi-mega-card .client-name {
+    color: var(--gold-end);
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.waridi-mega-card .quote-box p {
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Minimalist Arrows (Positioned at Edges) */
+.waridi-mega-card .slider-btn {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: auto;
+    height: auto;
+    color: #ccc; /* Subtle Grey */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    margin: 0;
+}
+
+.waridi-mega-card .prev-btn { left: -20px; }
+.waridi-mega-card .next-btn { right: -20px; }
+
+.waridi-mega-card .slider-btn:hover {
+    color: var(--gold-end);
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* 5. MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .waridi-mega-card {
+        width: 95%;
+        padding: 50px 20px;
+        margin-top: -80px;
+        margin-bottom: -50px;
+    }
+
+    /* Grid becomes 1 column */
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    /* Testimonials stack vertically */
+    .waridi-mega-card .testimonial-content {
+        flex-direction: column;
+        margin: 0;
+        text-align: center;
+    }
+
+    .waridi-mega-card .client-text,
+    .waridi-mega-card .client-name {
+        text-align: center;
+    }
+
+    .waridi-mega-card .slider-btn {
+        display: none; /* Hide arrows on mobile, rely on swipe/dots */
+    }
+}

@@ -50,38 +50,36 @@
         </ul>
     </div>
 
-    <main>
-        <!-- 2. HERO IMAGE SECTION (Background Only) -->
+        <main>
+        <!-- 1. TOP HERO IMAGE -->
         <section class="page-hero">
-            <!-- We use the Catering Image here -->
             <img src="Images/Catering.jpg" alt="Catering Hero" class="hero-bg-img">
             <div class="hero-tint"></div>
         </section>
 
-        <!-- 3. FLOATING CONTENT BOX (The "Waridi" Overlap) -->
-        <section class="floating-wrapper">
-            <div class="floating-card">
+        <!-- 2. THE MEGA CONTAINER (Wraps EVERYTHING) -->
+        <div class="waridi-mega-card">
+            
+            <!-- A. Header Content -->
+            <div class="mega-header">
                 <h1>Catering Services</h1>
                 
+                <!-- Button 1 -->
                 <a href="index.html#contact-form" class="btn btn-primary">Get in Touch</a>
-
-                <div class="card-text">
+                
+                <div class="mega-intro-text">
                     <p>At Saint-Man Events, our culinary success is driven by our dedicated team of professional chefs who are passionate about delivering exceptional flavors. We curate specific menus tailored to your unique needs, ensuring that every bite is a memorable experience. Whether it is an intimate gathering or a grand corporate gala, we bring the restaurant experience to you.</p>
                 </div>
-
-                <!-- The Gold Divider Line -->
-                <div class="content-divider"></div>
             </div>
-        </section>
 
-        <!-- 4. FEATURES GRID (Icons Section) -->
-        <section class="service-details-section">
+            <!-- B. Full Gold Line 1 -->
+            <hr class="gold-line-full">
+
+            <!-- C. Services Grid -->
             <div class="details-grid">
-                
                 <!-- Item 1 -->
                 <div class="detail-item">
                     <div class="icon-box">
-                        <!-- Hexagon Icon -->
                         <svg viewBox="0 0 100 100" class="gold-svg">
                             <path d="M50 5 L90 27 L90 73 L50 95 L10 73 L10 27 Z" fill="url(#goldGrad)" />
                             <defs>
@@ -94,14 +92,13 @@
                     </div>
                     <div class="detail-text">
                         <h3>Wedding Catering</h3>
-                        <p>Full-service packages including menu tasting, table settings, and professional waitstaff to make your special day flawless.</p>
+                        <p>Full-service packages including menu tasting, table settings, and professional waitstaff.</p>
                     </div>
                 </div>
 
                 <!-- Item 2 -->
                 <div class="detail-item">
                     <div class="icon-box">
-                        <!-- Circle Icon -->
                         <svg viewBox="0 0 100 100" class="gold-svg">
                             <circle cx="50" cy="50" r="40" stroke="url(#goldGrad)" stroke-width="4" fill="none" opacity="0.3" />
                             <circle cx="50" cy="50" r="25" fill="url(#goldGrad)" />
@@ -109,7 +106,7 @@
                     </div>
                     <div class="detail-text">
                         <h3>Corporate Lunches</h3>
-                        <p>Executive catering for board meetings, conferences, and launches. We provide efficiency without compromising on taste.</p>
+                        <p>Executive catering for board meetings, conferences, and launches.</p>
                     </div>
                 </div>
 
@@ -123,7 +120,7 @@
                     </div>
                     <div class="detail-text">
                         <h3>Private Parties</h3>
-                        <p>Birthday bashes, anniversaries, and family reunions. We handle the food so you can handle the hosting.</p>
+                        <p>Birthday bashes, anniversaries, and family reunions.</p>
                     </div>
                 </div>
 
@@ -136,100 +133,82 @@
                     </div>
                     <div class="detail-text">
                         <h3>Outdoor & Festivals</h3>
-                        <p>Logistical expertise for outdoor events, ensuring fresh hot food regardless of the location or terrain.</p>
+                        <p>Logistical expertise for outdoor events and festivals.</p>
                     </div>
                 </div>
-
-            </div>
-        </section>
-
-        <!-- 5. TESTIMONIALS (Reused from Index) -->
-<!-- 5. REPLICATED TESTIMONIALS SLIDER (Waridi Style) -->
-<section class="reviews-section">
-    <div class="reviews-container">
-        <h2>Trusted by Happy Clients</h2>
-        
-        <div class="carousel-wrapper">
-            <!-- Left Arrow -->
-            <button class="slider-btn prev-btn" aria-label="Previous Slide">
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-
-            <!-- The Track (Holds all slides) -->
-            <div class="testimonial-track-container">
-                <ul class="testimonial-track">
-                    
-                    <!-- Slide 1 -->
-                    <li class="testimonial-slide current-slide">
-                        <div class="testimonial-content">
-                            <div class="client-image">
-                                <span class="initials">S&J</span>
-                            </div>
-                            <div class="client-text">
-                                <h4 class="client-name">Sarah & James</h4>
-                                <p class="client-role">Wedding Couple</p>
-                                <div class="quote-box">
-                                    <p>"Saint-Man Events made our wedding absolutely magical. The food was the highlight of the night! The team was invisible yet everywhere at once."</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!-- Slide 2 -->
-                    <li class="testimonial-slide">
-                        <div class="testimonial-content">
-                            <div class="client-image">
-                                <span class="initials">TC</span>
-                            </div>
-                            <div class="client-text">
-                                <h4 class="client-name">TechCorp Industries</h4>
-                                <p class="client-role">Corporate Gala</p>
-                                <div class="quote-box">
-                                    <p>"Professional, punctual, and incredibly creative. Our end-of-year gala was a massive success thanks to the seamless coordination."</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!-- Slide 3 -->
-                    <li class="testimonial-slide">
-                        <div class="testimonial-content">
-                            <div class="client-image">
-                                <span class="initials">MK</span>
-                            </div>
-                            <div class="client-text">
-                                <h4 class="client-name">Michael K.</h4>
-                                <p class="client-role">Private Yacht Party</p>
-                                <div class="quote-box">
-                                    <p>"The yacht party setup was breathtaking. Highly recommended for premium experiences. The seafood platter was fresh and exquisite."</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                </ul>
             </div>
 
-            <!-- Right Arrow -->
-            <button class="slider-btn next-btn" aria-label="Next Slide">
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-        </div>
+            <!-- D. Button 2 (Centered) -->
+            <div class="mega-btn-container">
+                <a href="index.html#contact-form" class="btn btn-primary">Get in Touch</a>
+            </div>
 
-        <!-- Pagination Dots -->
-        <div class="carousel-nav">
-            <button class="carousel-dot current-slide"></button>
-            <button class="carousel-dot"></button>
-            <button class="carousel-dot"></button>
-        </div>
-    </div>
-</section>
+            <!-- E. Full Gold Line 2 -->
+            <hr class="gold-line-full">
 
-        <!-- 6. BOTTOM BANNER IMAGE (Matches Waridi Footer Image) -->
+            <!-- F. Testimonials (Inside the card now) -->
+            <div class="mega-reviews">
+                <h2>Trusted by Happy Clients</h2>
+                
+                <div class="carousel-wrapper">
+                    <!-- Previous Btn -->
+                    <button class="slider-btn prev-btn">
+                        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+
+                    <!-- Track -->
+                    <div class="testimonial-track-container">
+                        <ul class="testimonial-track">
+                            <li class="testimonial-slide current-slide">
+                                <div class="testimonial-content">
+                                    <div class="client-image"><span class="initials">S&J</span></div>
+                                    <div class="client-text">
+                                        <h4 class="client-name">Sarah & James</h4>
+                                        <p class="client-role">Wedding Couple</p>
+                                        <div class="quote-box"><p>"Saint-Man Events made our wedding absolutely magical!"</p></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="testimonial-slide">
+                                <div class="testimonial-content">
+                                    <div class="client-image"><span class="initials">TC</span></div>
+                                    <div class="client-text">
+                                        <h4 class="client-name">TechCorp</h4>
+                                        <p class="client-role">Corporate Gala</p>
+                                        <div class="quote-box"><p>"Professional, punctual, and incredibly creative."</p></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="testimonial-slide">
+                                <div class="testimonial-content">
+                                    <div class="client-image"><span class="initials">MK</span></div>
+                                    <div class="client-text">
+                                        <h4 class="client-name">Michael K.</h4>
+                                        <p class="client-role">Yacht Party</p>
+                                        <div class="quote-box"><p>"The yacht party setup was breathtaking."</p></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Next Btn -->
+                    <button class="slider-btn next-btn">
+                        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+                
+                <!-- Dots -->
+                <div class="carousel-nav">
+                    <button class="carousel-dot current-slide"></button>
+                    <button class="carousel-dot"></button>
+                    <button class="carousel-dot"></button>
+                </div>
+            </div>
+
+        </div> <!-- End of Mega Card -->
+
+        <!-- 3. BOTTOM BANNER (Sits BEHIND the float) -->
         <section class="bottom-banner">
             <img src="Images/Catering.jpg" alt="Event Atmosphere">
         </section>
