@@ -1381,3 +1381,47 @@ body.inner-page .cta-item {
     /* Ensure this isn't TOO huge, or adjust as needed */
     padding-bottom: 60px; 
 }
+
+/* =========================================
+   FIX: ALIGN "READ MORE" TO BOTTOM
+   ========================================= */
+
+/* 1. Make the Card a vertical Flex container */
+.product-card {
+    display: flex;
+    flex-direction: column; /* Stack Image then Details */
+    height: 100%; /* Force card to match the height of its tallest neighbor */
+    
+    /* Keep existing styles */
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    transition: transform 0.3s;
+    overflow: hidden;
+}
+
+/* 2. Make the Details section fill the empty space */
+.card-details {
+    display: flex;
+    flex-direction: column; /* Stack Title, Text, Button */
+    flex-grow: 1; /* This makes the white area stretch to fill the card */
+    
+    padding: 30px;
+}
+
+/* 3. The "Magic" Spacer */
+.read-more-btn {
+    margin-top: auto; /* Pushes the button to the absolute bottom of the container */
+    
+    /* Keep existing styles */
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--dark);
+    letter-spacing: 1px;
+    transition: 0.3s;
+    padding-top: 20px; /* Optional: Adds a bit of breathing room above button */
+}
