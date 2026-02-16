@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentDot = dotsNav.querySelector('.current-slide');
         const targetIndex = dots.findIndex(dot => dot === targetDot);
         const targetSlide = slides[targetIndex];
-
+                
         updateSlide(currentSlide, targetSlide);
         updateDots(currentDot, targetDot);
     });
