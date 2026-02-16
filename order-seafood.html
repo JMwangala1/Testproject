@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Seafood | Saint-Man Events</title>
+    
+    <!-- Branding -->
+    <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
+    <link rel="shortcut icon" href="Images/favicon.ico">
+    <link rel="manifest" href="Images/site.webmanifest">
+    
+    <!-- CSS & Fonts -->
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script> 
+</head>
+<body class="inner-page">
+
+    <!-- NAVIGATION -->
+    <nav class="nav-menu solid-nav" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-box">
+                <img src="Images/New_logo.png" alt="Saint-Man Logo" class="logo-img">
+            </a>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <div class="menu-bar">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-item">Home</a></li>
+                    <li><a href="service-seafoods.html" class="nav-item active">Seafoods</a></li>
+                    <li><a href="index.html#contact-form" class="nav-item cta-item">Book Events</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <button class="close-menu" id="closeMenu">&times;</button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="service-seafoods.html">Seafoods</a></li>
+            <li><a href="index.html#contact-form">Contact</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- HERO (Darker tint for focus) -->
+        <section class="page-hero">
+            <img src="Images/Seafoods.jpg" alt="Fresh Catch" class="hero-bg-img">
+            <div class="hero-tint" style="background: rgba(0,0,0,0.6);"></div>
+        </section>
+
+        <!-- THE ORDER CONSOLE (Modified Mega Card) -->
+        <div class="waridi-mega-card order-console">
+            
+            <div class="mega-header">
+                <h1>Reserve Your Catch</h1>
+                <p class="order-subtitle">Fresh from the Coast. Delivered to your Doorstep.</p>
+                <hr class="gold-line-full">
+            </div>
+
+            <!-- SPLIT LAYOUT: FORM vs DIRECT CONTACT -->
+            <div class="order-layout">
+                
+                <!-- COLUMN 1: THE DETAILED FORM -->
+                <div class="form-column">
+                    <h3>Order Details</h3>
+                    <form action="https://formspree.io/f/mgoabrbr" method="POST" class="luxury-form">
+                        
+                        <!-- Hidden Subject Line for Email -->
+                        <input type="hidden" name="_subject" value="New SEAFOOD Order Request">
+
+                        <!-- Personal Info -->
+                        <div class="input-group">
+                            <label>Full Name / Business Name</label>
+                            <input type="text" name="name" required placeholder="e.g. John Doe or Ocean Hotel">
+                        </div>
+
+                        <div class="row-group">
+                            <div class="input-group">
+                                <label>Phone Number</label>
+                                <input type="tel" name="phone" required placeholder="+254...">
+                            </div>
+                            <div class="input-group">
+                                <label>Location / City</label>
+                                <select name="location" required>
+                                    <option value="" disabled selected>Select...</option>
+                                    <option value="Mombasa">Mombasa (Free Delivery)</option>
+                                    <option value="Nairobi">Nairobi (Air Freight)</option>
+                                    <option value="Naivasha">Naivasha</option>
+                                    <option value="Other">Other Region</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Product Selection -->
+                        <div class="input-group">
+                            <label>Select Products (Hold Ctrl to select multiple)</label>
+                            <div class="checkbox-grid">
+                                <label class="check-box"><input type="checkbox" name="product" value="Red Snapper"> Red Snapper</label>
+                                <label class="check-box"><input type="checkbox" name="product" value="Jumbo Prawns"> Jumbo Prawns</label>
+                                <label class="check-box"><input type="checkbox" name="product" value="King Fish"> King Fish</label>
+                                <label class="check-box"><input type="checkbox" name="product" value="Lobster"> Lobster</label>
+                                <label class="check-box"><input type="checkbox" name="product" value="Calamari"> Calamari</label>
+                                <label class="check-box"><input type="checkbox" name="product" value="Octopus"> Octopus</label>
+                                <label class="check-box"><input type="checkbox" name="product" value="Crabs"> Crabs</label>
+                                <label class="check-box"><input type="checkbox" name="product" value="Platter"> Full Platter</label>
+                            </div>
+                        </div>
+
+                        <div class="row-group">
+                            <div class="input-group">
+                                <label>Preparation Preference</label>
+                                <select name="prep_style">
+                                    <option>Whole / As Is</option>
+                                    <option>Filleted / Cleaned</option>
+                                    <option>Deshelled (Prawns)</option>
+                                    <option>Steaks / Slices</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Approx. Quantity (Kgs)</label>
+                                <input type="text" name="quantity" placeholder="e.g. 5kg">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Delivery Date Required</label>
+                            <input type="date" name="delivery_date">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Special Instructions / Address</label>
+                            <textarea name="notes" rows="3" placeholder="Specific delivery instructions..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary full-width">Submit Order Request</button>
+                    </form>
+                </div>
+
+                <!-- COLUMN 2: THE VIP CONCIERGE (Sticky) -->
+                <div class="contact-column">
+                    <div class="concierge-card">
+                        <h3>Urgent / Bulk Orders?</h3>
+                        <p>For immediate kitchen restocking or large event supplies, contact our logistics manager directly.</p>
+                        
+                        <a href="https://wa.me/254701639517?text=Hello%20Saint-Man%2C%20I%20have%20an%20urgent%20seafood%20inquiry." target="_blank" class="btn btn-whatsapp">
+                            <span class="icon">💬</span> Chat on WhatsApp
+                        </a>
+
+                        <a href="tel:+254701639517" class="btn btn-outline-dark">
+                            <span class="icon">📞</span> Call: 0701 639 517
+                        </a>
+
+                        <hr class="divider-small">
+
+                        <div class="trust-badges">
+                            <div class="badge-item">
+                                <strong>🚚 Logistics</strong>
+                                <span>Mombasa: Same Day<br>Nairobi: Next Morning</span>
+                            </div>
+                            <div class="badge-item">
+                                <strong>❄️ Freshness</strong>
+                                <span>Packed on Ice & <br>Sealed for Freshness</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- BOTTOM BANNER -->
+        <section class="bottom-banner">
+            <img src="Images/Seafoods.jpg" alt="Ocean Fresh">
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Saint-Man Events</h3>
+                <p>&copy; 2025 All rights reserved.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><a href="mailto:mwangalajohn3@gmail.com">mwangalajohn3@gmail.com</a></p>
+                <p>Nairobi & Mombasa</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

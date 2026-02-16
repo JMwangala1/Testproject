@@ -1425,3 +1425,187 @@ body.inner-page .cta-item {
     transition: 0.3s;
     padding-top: 20px; /* Optional: Adds a bit of breathing room above button */
 }
+
+/* =========================================
+   ORDER PAGE SPECIFIC STYLES
+   ========================================= */
+
+/* Layout Grid */
+.order-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Form takes 60%, Contact 40% */
+    gap: 60px;
+    text-align: left;
+    margin-top: 40px;
+}
+
+.order-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: -20px;
+}
+
+/* --- THE FORM (Luxury Inputs) --- */
+.luxury-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--dark);
+    letter-spacing: 0.5px;
+}
+
+.luxury-form input, 
+.luxury-form select, 
+.luxury-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px; /* Sharp clean edges */
+    background: #fcfcfc;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.luxury-form input:focus, 
+.luxury-form select:focus, 
+.luxury-form textarea:focus {
+    border-color: var(--gold-end);
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.1);
+    outline: none;
+}
+
+.row-group {
+    display: flex;
+    gap: 20px;
+}
+.row-group .input-group {
+    flex: 1;
+}
+
+/* Checkbox Grid */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.check-box {
+    font-weight: 400 !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.full-width {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* --- THE CONCIERGE CARD (Right Side) --- */
+.concierge-card {
+    background: #f8f8f8;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    position: sticky;
+    top: 120px; /* Sticks when scrolling */
+}
+
+.concierge-card h3 {
+    color: var(--gold-end);
+    margin-bottom: 15px;
+}
+
+.concierge-card p {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* WhatsApp Button */
+.btn-whatsapp {
+    background: #25D366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
+}
+
+.btn-whatsapp:hover {
+    background: #20b857;
+    transform: translateY(-2px);
+}
+
+.btn-outline-dark {
+    border: 2px solid var(--dark);
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 4px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-outline-dark:hover {
+    background: var(--dark);
+    color: #fff;
+}
+
+.divider-small {
+    border: none;
+    height: 1px;
+    background: #ddd;
+    margin: 30px 0;
+}
+
+.trust-badges {
+    font-size: 0.9rem;
+}
+.badge-item {
+    margin-bottom: 15px;
+}
+.badge-item strong {
+    display: block;
+    color: var(--dark);
+    margin-bottom: 3px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .order-layout {
+        grid-template-columns: 1fr; /* Stack vertically */
+    }
+    .row-group {
+        flex-direction: column;
+        gap: 0;
+    }
+    .checkbox-grid {
+        grid-template-columns: 1fr; /* Single column checkboxes */
+    }
+    .concierge-card {
+        position: relative; /* Unstick on mobile */
+        top: 0;
+        margin-top: 20px;
+    }
+}
