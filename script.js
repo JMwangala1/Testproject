@@ -84,66 +84,76 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScrollY = currentScroll;
     });
 
-    /* =========================================
-       TESTIMONIAL SLIDER LOGIC
+  /* =========================================
+       TESTIMONIAL SLIDER LOGIC (SAFE MODE)
     ========================================= */
     const track = document.querySelector('.testimonial-track');
-    const slides = Array.from(track.children);
-    const nextButton = document.querySelector('.next-btn');
-    const prevButton = document.querySelector('.prev-btn');
-    const dotsNav = document.querySelector('.carousel-nav');
-    const dots = Array.from(dotsNav.children);
+    
+    // SAFETY CHECK: Only run if the track exists on this specific page
+    if (track) { 
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.next-btn');
+        const prevButton = document.querySelector('.prev-btn');
+        const dotsNav = document.querySelector('.carousel-nav');
+        const dots = Array.from(dotsNav.children);
 
-    const updateSlide = (currentSlide, targetSlide) => {
-        currentSlide.classList.remove('current-slide');
-        targetSlide.classList.add('current-slide');
+        const updateSlide = (currentSlide, targetSlide) => {
+            currentSlide.classList.remove('current-slide');
+            targetSlide.classList.add('current-slide');
+        }
+
+        const updateDots = (currentDot, targetDot) => {
+            currentDot.classList.remove('current-slide');
+            targetDot.classList.add('current-slide');
+        }
+
+        // Next Button Click
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                const currentSlide = track.querySelector('.current-slide');
+                const nextSlide = currentSlide.nextElementSibling || slides[0]; 
+                const currentDot = dotsNav.querySelector('.current-slide');
+                const nextDot = currentDot.nextElementSibling || dots[0];
+
+                updateSlide(currentSlide, nextSlide);
+                updateDots(currentDot, nextDot);
+            });
+        }
+
+        // Prev Button Click
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                const currentSlide = track.querySelector('.current-slide');
+                const prevSlide = currentSlide.previousElementSibling || slides[slides.length - 1]; 
+                const currentDot = dotsNav.querySelector('.current-slide');
+                const prevDot = currentDot.previousElementSibling || dots[dots.length - 1];
+
+                updateSlide(currentSlide, prevSlide);
+                updateDots(currentDot, prevDot);
+            });
+        }
+
+        // Dot Click
+        if (dotsNav) {
+            dotsNav.addEventListener('click', e => {
+                const targetDot = e.target.closest('button');
+                if (!targetDot) return;
+
+                const currentSlide = track.querySelector('.current-slide');
+                const currentDot = dotsNav.querySelector('.current-slide');
+                const targetIndex = dots.findIndex(dot => dot === targetDot);
+                const targetSlide = slides[targetIndex];
+
+                updateSlide(currentSlide, targetSlide);
+                updateDots(currentDot, targetDot);
+            });
+        }
+        
+        // Auto-play
+        setInterval(() => {
+            if(nextButton) nextButton.click();
+        }, 7000);
     }
-
-    const updateDots = (currentDot, targetDot) => {
-        currentDot.classList.remove('current-slide');
-        targetDot.classList.add('current-slide');
-    }
-
-    // Next Button Click
-    nextButton.addEventListener('click', () => {
-        const currentSlide = track.querySelector('.current-slide');
-        const nextSlide = currentSlide.nextElementSibling || slides[0]; // Loop back to start
-        const currentDot = dotsNav.querySelector('.current-slide');
-        const nextDot = currentDot.nextElementSibling || dots[0];
-
-        updateSlide(currentSlide, nextSlide);
-        updateDots(currentDot, nextDot);
-    });
-
-    // Prev Button Click
-    prevButton.addEventListener('click', () => {
-        const currentSlide = track.querySelector('.current-slide');
-        const prevSlide = currentSlide.previousElementSibling || slides[slides.length - 1]; // Loop to end
-        const currentDot = dotsNav.querySelector('.current-slide');
-        const prevDot = currentDot.previousElementSibling || dots[dots.length - 1];
-
-        updateSlide(currentSlide, prevSlide);
-        updateDots(currentDot, prevDot);
-    });
-
-    // Dot Click
-    dotsNav.addEventListener('click', e => {
-        const targetDot = e.target.closest('button');
-        if (!targetDot) return;
-
-        const currentSlide = track.querySelector('.current-slide');
-        const currentDot = dotsNav.querySelector('.current-slide');
-        const targetIndex = dots.findIndex(dot => dot === targetDot);
-        const targetSlide = slides[targetIndex];
-                
-        updateSlide(currentSlide, targetSlide);
-        updateDots(currentDot, targetDot);
-    });
-
-    // Optional: Auto-play every 5 seconds
-    setInterval(() => {
-        nextButton.click();
-    }, 7000);
 
 
     /* ================================
