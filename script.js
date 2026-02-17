@@ -186,59 +186,91 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-    /* ================================
-       FORMSPREE FORM SUBMISSION
+/* ================================
+       FORMSPREE FORM SUBMISSION (UNIVERSAL HANDLER)
     ================================= */
 
-    const bookingForm = document.getElementById('bookingForm');
-    const msgBox = document.getElementById('formMessage');
+    // 1. Define a reusable function to handle ANY form
+    const handleFormSubmit = (formId, msgId) => {
+        const form = document.getElementById(formId);
+        const msgBox = document.getElementById(msgId);
 
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
+        // Safety Check: Only run if the form exists on the current page
+        if (form) {
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
 
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerText;
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerText;
 
-            submitBtn.innerText = 'Sending...';
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = '0.7';
-            msgBox.innerHTML = '';
+                // A. Loading State
+                submitBtn.innerText = 'Sending...';
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.7';
+                if(msgBox) msgBox.innerHTML = '';
 
-            const formData = new FormData(this);
+                const formData = new FormData(this);
 
-            try {
-                const response = await fetch(this.action, {
-                    method: this.method,
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
+                try {
+                    const response = await fetch(this.action, {
+                        method: this.method,
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
 
-                if (response.ok) {
-                    msgBox.innerHTML = 'Thank you! Your inquiry has been sent successfully.';
-                    msgBox.style.color = 'green';
+                    if (response.ok) {
+                        // B. Success State
+                        if(msgBox) {
+                            msgBox.innerHTML = 'Thank you! Your request has been received.';
+                            msgBox.style.color = 'green';
+                            msgBox.style.marginTop = '15px';
+                            msgBox.style.fontWeight = '600';
+                        }
 
-                    this.reset();
-                    submitBtn.innerText = 'Sent ✔';
-                    submitBtn.style.backgroundColor = 'green';
-                } else {
-                    msgBox.innerHTML = 'Oops! There was a problem submitting your form.';
-                    msgBox.style.color = 'red';
+                        this.reset(); // <--- CRITICAL: Wipes the form clean
+                        
+                        submitBtn.innerText = 'Sent ✔';
+                        submitBtn.style.backgroundColor = 'green';
+                        submitBtn.style.color = '#fff';
+                        submitBtn.style.border = 'none';
+                    } else {
+                        // C. Server Error
+                        if(msgBox) {
+                            msgBox.innerHTML = 'Oops! There was a problem submitting your form.';
+                            msgBox.style.color = 'red';
+                        }
+                    }
+
+                } catch (error) {
+                    // D. Network Error
+                    if(msgBox) {
+                        msgBox.innerHTML = 'Network error. Please try again later.';
+                        msgBox.style.color = 'red';
+                    }
                 }
 
-            } catch (error) {
-                msgBox.innerHTML = 'Network error. Please try again later.';
-                msgBox.style.color = 'red';
-            }
+                // E. Restore Button (after 5 seconds)
+                setTimeout(() => {
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.style.backgroundColor = '';
+                    submitBtn.style.color = '';
+                    submitBtn.style.border = '';
+                }, 5000);
+            });
+        }
+    };
 
-            setTimeout(() => {
-                submitBtn.innerText = originalText;
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '1';
-                submitBtn.style.backgroundColor = '';
-            }, 5000);
-        });
-    }
+    // 2. Initialize the Forms
+    
+    // A. Home Page Booking Form
+    // (form ID="bookingForm", message ID="formMessage")
+    handleFormSubmit('bookingForm', 'formMessage');
+
+    // B. Seafood Order Page Form
+    // (form ID="seafoodOrderForm", message ID="orderMessage")
+    handleFormSubmit('seafoodOrderForm', 'orderMessage');
 
 });
 
