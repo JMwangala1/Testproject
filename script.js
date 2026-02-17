@@ -293,7 +293,7 @@ window.addEventListener('load', () => {
     h1Lines.forEach((line, index) => {
         setTimeout(() => {
             line.style.opacity = '1';
-            line.style.transform = 'translateX(0)';
+            line.style.transform = 'translateY(0)';
         }, index * 180);
     });
 
@@ -301,7 +301,7 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         if (p) {
             p.style.opacity = '1';
-            p.style.transform = 'translateX(0)';
+            p.style.transform = 'translateY(0)';
         }
     }, h1Lines.length * 180 + 200);
 
@@ -309,7 +309,7 @@ window.addEventListener('load', () => {
     buttons?.forEach((btn, index) => {
         setTimeout(() => {
             btn.style.opacity = '1';
-            btn.style.transform = 'translateX(0)';
+            btn.style.transform = 'translateY(0)';
         }, h1Lines.length * 180 + 400 + index * 150);
     });
 });

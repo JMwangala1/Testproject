@@ -319,18 +319,18 @@ h3 {
 .hero p,
 .hero-btns .btn {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateY(-50px);
 }
 
 /* H1 line pop animation */
 .hero h1 span {
     display: block;
-    transition: opacity 3.5s ease-out, transform 3.5s ease-out;
+    transition: opacity 2.5s ease-out, transform 2.5s ease-out;
 }
 
 /* Paragraph slide */
 .hero p {
-    transition: opacity 2.5s ease-out, transform 2.5s ease-out;
+    transition: opacity 1.85s ease-out, transform 1.85s ease-out;
 }
 
 /* Buttons stagger */
@@ -343,7 +343,7 @@ h3 {
 .hero-animate p,
 .hero-animate .btn {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
 }
 
 /* Accessibility: reduce motion */
