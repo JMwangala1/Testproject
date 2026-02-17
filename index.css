@@ -1671,3 +1671,40 @@ body.inner-page .cta-item {
         height: 55px;
     }
 }
+
+/* =========================================
+   FIXED WHATSAPP ICON STYLING
+   ========================================= */
+
+.wa-float {
+    background: transparent !important; /* SVG provides the green color */
+    box-shadow: none !important;        /* SVG has its own weight */
+    padding: 0;
+    margin: 0;
+    
+    /* Ensure perfect circle & alignment */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Animation */
+    animation: floatDance 3s infinite ease-in-out;
+    animation-delay: 1.5s;
+    
+    /* Size adjustments */
+    width: 65px;
+    height: 65px;
+    
+    /* Remove any borders */
+    border: none;
+    overflow: visible; /* Let the drop shadow breathe */
+}
+
+.wa-icon-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* Add the 3D Pop Shadow here */
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
+}
