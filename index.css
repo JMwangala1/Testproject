@@ -1708,3 +1708,185 @@ body.inner-page .cta-item {
     /* Add the 3D Pop Shadow here */
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
 }
+
+/* =========================================
+   PORTFOLIO SECTION (Masonry Layout)
+   ========================================= */
+
+.portfolio-section {
+    padding: 100px 20px;
+    background: #fff; /* Clean white backdrop */
+}
+
+/* The Grid System */
+.gallery-grid {
+    display: grid;
+    /* This creates a flexible grid that adapts to screen size */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 300px; /* Fixed row height, but items can span multiple */
+    gap: 0;
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+/* The Image Container */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Image Styling */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures photos fill the box without stretching */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: block;
+}
+
+/* --- MASONRY SIZES (Visual Interest) --- */
+/* Makes an image span 2 columns (Wide shot) */
+.gallery-item.wide {
+    grid-column: span 2;
+}
+
+/* Makes an image span 2 rows (Tall shot) */
+.gallery-item.tall {
+    grid-row: span 2;
+}
+
+/* --- HOVER EFFECTS (The Luxury Touch) --- */
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* Dark tint */
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+}
+
+.plus-icon {
+    font-size: 3rem;
+    color: var(--gold-end);
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+/* Action on Hover */
+.gallery-item:hover img {
+    transform: scale(1.1); /* Smooth zoom in */
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-item:hover .plus-icon {
+    transform: translateY(0);
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Stack vertically on mobile */
+        grid-auto-rows: 250px;
+    }
+    
+    /* Disable fancy spans on mobile to prevent gaps */
+    .gallery-item.wide, 
+    .gallery-item.tall {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
+
+/* =========================================
+   FIX: REDUCE WHITE SPACE (Services -> Portfolio)
+   ========================================= */
+
+/* 1. Remove the bottom padding from the Products/Services section */
+#products {
+    padding-bottom: 0 !important; 
+}
+
+/* 2. Reduce the top padding of the Portfolio section */
+.portfolio-section {
+    padding-top: 30px !important; /* Just enough space for the Gold Line to breathe */
+}
+
+/* Optional: Pull the header closer if it still feels far */
+.portfolio-section .section-header {
+    margin-bottom: 40px; /* Tights the space between "Masterpieces" title and the photos */
+}
+
+/* =========================================
+   FIX: CONSTRAIN PORTFOLIO TEXT WIDTH
+   ========================================= */
+
+.portfolio-section .section-header p {
+    /* 1. Limit the width so it doesn't stretch */
+    max-width: 700px; 
+    
+    /* 2. Force it to the center */
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* 3. Improve readability */
+    line-height: 1.8;
+    color: #666;
+}
+
+/* =========================================
+   MOBILE GLAMOUR GRID (Gap-Free Fix)
+   ========================================= */
+
+@media (max-width: 768px) {
+    
+    .gallery-grid {
+        /* 1. Base Layout: 2 Columns */
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        grid-auto-rows: 200px; /* Increased height slightly for better visuals */
+        grid-auto-flow: dense; /* Packs items tightly */
+        gap: 0; /* Zero gap as requested */
+    }
+
+    .gallery-item {
+        border: 1px solid #fff; /* Clean cut lines */
+    }
+
+    /* --- THE FIX FOR WHITE SPACE --- */
+    
+    /* WIDE IMAGES: Full Width (Landscape) */
+    .gallery-item.wide {
+        grid-column: span 2;
+        height: 250px;
+    }
+
+    /* TALL IMAGES: Full Width (Portrait) */
+    /* Changing this to span 2 columns eliminates the side-gap risk completely */
+    .gallery-item.tall {
+        grid-column: span 2; 
+        grid-row: span 2; /* Makes it a big, impressive vertical shot (400px tall) */
+    }
+    
+    /* STANDARD IMAGES */
+    /* These will naturally sit side-by-side (1fr 1fr) */
+
+    /* Hide the hover overlay on mobile since you can't hover */
+    .gallery-overlay {
+        display: none; 
+    }
+
+        .gallery-item:last-child {
+        grid-column: span 2; /* Forces it to stretch across both columns */
+        height: 250px;       /* Gives it a nice "Hero" height to finish the section */
+        object-position: center;
+    }
+}
+
