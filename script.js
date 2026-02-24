@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-/* ================================
+ /* ================================
        FORMSPREE FORM SUBMISSION (UNIVERSAL HANDLER)
     ================================= */
 
@@ -238,6 +238,53 @@ document.addEventListener('DOMContentLoaded', () => {
     // B. Seafood Order Page Form
     // (form ID="seafoodOrderForm", message ID="orderMessage")
     handleFormSubmit('seafoodOrderForm', 'orderMessage');
+
+/* =========================================
+       SCROLL ANIMATION (Images Only - Row Sequence)
+    ========================================= */
+    
+    // Target only the images, not the whole card
+    const serviceImages = document.querySelectorAll('.product-card .img-container');
+
+    const observerOptions = {
+        threshold: 0.2 // Trigger when 20% of the image is visible
+    };
+
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                
+                // Get the index of this image (0 to 5)
+                const index = Array.from(serviceImages).indexOf(img);
+                
+                // LOGIC: 
+                // Top Row (0,1,2) -> Delay: 0ms, 200ms, 400ms
+                // Bottom Row (3,4,5) -> Delay: 600ms, 800ms, 1000ms (Waits for top row)
+                
+                let delay = 0;
+                
+                if (index < 3) {
+                    // Top Row Logic
+                    delay = index * 200; 
+                } else {
+                    // Bottom Row Logic (Start after 600ms)
+                    delay = 600 + ((index - 3) * 200);
+                }
+
+                setTimeout(() => {
+                    img.classList.add('reveal-visible');
+                }, delay);
+                
+                // Stop observing this image
+                observer.unobserve(img);
+            }
+        });
+    }, observerOptions);
+
+    serviceImages.forEach(image => {
+        imageObserver.observe(image);
+    }); 
 
 });
 

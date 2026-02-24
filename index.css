@@ -1921,3 +1921,193 @@ body.inner-page .cta-item {
     background: linear-gradient(90deg, var(--gold-start), var(--gold-end)) !important;
 }
 
+/* =========================================
+   WARIDI STYLE: CIRCULAR SERVICES (CLEAN PRODUCTION VERSION)
+   ========================================= */
+
+/* 1. Card Container (Flexbox for Alignment) */
+.product-card {
+    display: flex !important;
+    flex-direction: column;
+    height: 100%; /* Match height of tallest card */
+    
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    text-align: center;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* =========================================
+   2. Image Container (Animated)
+   ========================================= */
+.img-container {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    overflow: hidden;
+    border: 5px solid #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    position: relative;
+
+    /* Hidden state for reveal animation */
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+    transition: opacity 0.8s ease-out, 
+                transform 0.8s ease-out, 
+                border-color 0.3s;
+}
+
+/* Reveal Animation */
+.img-container.reveal-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* Desktop Hover Effect */
+.product-card:hover .img-container.reveal-visible {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--gold-end);
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.15);
+}
+
+/* =========================================
+   3. Text Wrapper (Push Button Down)
+   ========================================= */
+.card-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+    align-items: center;
+    padding: 0 10px;
+}
+
+/* =========================================
+   4. HEADING GOLD LINE FIX (NO DOUBLE LINES)
+   ========================================= */
+
+/* Kill any inherited pseudo elements inside #products */
+#products .card-details h3::before,
+#products .card-details h3::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Base Heading Style */
+#products .card-details h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--dark);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+    border: none !important;
+}
+
+/* Single Controlled Gold Line (Hidden by default on desktop) */
+#products .card-details h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 3px;
+    width: 0; /* Hidden initially */
+    background: var(--gold-end);
+    transition: width 0.3s ease;
+}
+
+/* Desktop Hover Expand */
+#products .product-card:hover h3::after {
+    width: 100%;
+}
+
+/* =========================================
+   5. Paragraph Styling
+   ========================================= */
+.card-details p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   6. Read More Button (Bottom Aligned)
+   ========================================= */
+.read-more-btn {
+    margin-top: auto; /* Push button to bottom */
+    padding-top: 15px;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--dark);
+}
+
+.read-more-btn:hover {
+    color: var(--gold-end);
+}
+
+/* =========================================
+   7. MOBILE FIX — FULL WIDTH GOLD LINE
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* Make heading full width */
+    #products .card-details h3 {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Full width gold line */
+    #products .card-details h3::after {
+        left: 0;
+        transform: none;
+        width: 100%;
+    }
+
+    /* Disable image hover movement */
+    #products .product-card:hover .img-container {
+        transform: none;
+    }
+}
+
+/* ===== FIX: Full width gold line on mobile ===== */
+@media (max-width: 768px) {
+
+.service-title-link {
+    position: relative;
+    display: inline-block;   /* IMPORTANT: shrink to text width */
+    padding-bottom: 6px;
+    color: inherit;
+}
+
+.service-title-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;             /* Now 100% of TEXT only */
+    height: 3px;
+    background: var(--gold-end);
+}
+
+}
