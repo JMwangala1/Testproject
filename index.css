@@ -1890,3 +1890,34 @@ body.inner-page .cta-item {
     }
 }
 
+/* =========================================
+   DISABLE STICKY NAV (Override)
+   ========================================= */
+
+/* 1. Force Nav to stay Absolute (Top of Page) */
+.nav-menu, 
+.nav-menu.is-sticky {
+    position: absolute !important;
+    top: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    transform: none !important; /* Stops it from hiding */
+}
+
+/* 2. Stop the Logo from shrinking */
+.nav-menu.is-sticky .logo-img {
+    height: clamp(100px, 10vw, 180px) !important;
+}
+
+/* 3. Reset Padding to default */
+.nav-menu.is-sticky .nav-container {
+    min-height: 100px !important;
+}
+
+/* 4. Keep the Mobile Menu Bar correct */
+.menu-bar {
+    /* Ensure it keeps its gradient look */
+    background: linear-gradient(90deg, var(--gold-start), var(--gold-end)) !important;
+}
+

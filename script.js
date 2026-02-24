@@ -51,39 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* =========================================
-       3. SMART STICKY NAV (OPTIMIZED)
-    ========================================= */
-    let lastScrollY = window.scrollY;
-    const nav = document.querySelector('.nav-menu');
-
-    // We hook into the Lenis scroll event for better sync than window.scroll
-    lenis.on('scroll', (e) => {
-        // Disable sticky logic on mobile
-        if (window.innerWidth <= 900) return;
-
-        const currentScroll = e.scroll; // Lenis gives us the exact scroll position
-
-        // Add sticky state after hero
-        if (currentScroll > 100) {
-            nav.classList.add('is-sticky');
-
-            // Scroll DOWN → hide nav
-            if (currentScroll > lastScrollY) {
-                nav.classList.add('nav-hidden');
-            } 
-            // Scroll UP → show nav
-            else {
-                nav.classList.remove('nav-hidden');
-            }
-        } else {
-            // Back to top
-            nav.classList.remove('is-sticky', 'nav-hidden');
-        }
-
-        lastScrollY = currentScroll;
-    });
-
   /* =========================================
        TESTIMONIAL SLIDER LOGIC (SAFE MODE)
     ========================================= */
