@@ -239,6 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // (form ID="seafoodOrderForm", message ID="orderMessage")
     handleFormSubmit('seafoodOrderForm', 'orderMessage');
 
+        // C. NEW: Contact Page Form (ADD THIS LINE) <---
+    handleFormSubmit('contactPageForm', 'contactMessage');
+
 /* =========================================
        SCROLL ANIMATION (Images Only - Row Sequence)
     ========================================= */

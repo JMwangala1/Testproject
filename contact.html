@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Saint-Man Events</title>
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script> 
+</head>
+
+<body class="contact-page">
+
+    <!-- 1. NAVIGATION (Full Menu, Transparent) -->
+    <!-- Removed 'solid-nav' so it floats on the image -->
+    <nav class="nav-menu" id="navbar">
+        <div class="nav-container">
+            
+            <a href="index.html" class="logo-box">
+                <img src="Images/New_logo.png" alt="Saint-Man Logo" class="logo-img">
+            </a>
+
+            <!-- Hamburger -->
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+
+            <!-- Full Menu Bar -->
+            <div class="menu-bar">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-item">Home</a></li>
+                    <li><a href="index.html#welcome" class="nav-item">About</a></li>
+                    <li><a href="index.html#products" class="nav-item">Services</a></li>
+                    <li><a href="index.html#reviews" class="nav-item">Reviews</a></li>
+                    <li><a href="index.html#news" class="nav-item">Offers</a></li>
+                    <!-- Contact is Active -->
+                    <li><a href="contact.html" class="nav-item active">Contact</a></li> 
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <button class="close-menu" id="closeMenu">&times;</button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#welcome">About</a></li>
+            <li><a href="index.html#products">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- 2. CONTACT HERO IMAGE (Top of page) -->
+        <section class="contact-hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content centered">
+                <h1>Contact Us</h1>
+                <p>Let's plan your next extraordinary moment.</p>
+            </div>
+        </section>
+
+        <!-- 3. INTRO DIV (Separate Section) -->
+        <section class="contact-intro">
+            <h2>For Inquiries or Questions</h2>
+            <p>Please use the form below to get a quote or schedule a consultation. <br> You can also email us directly at <a href="mailto:mwangalajohn3@gmail.com">mwangalajohn3@gmail.com</a></p>
+            <div class="gold-divider-center"></div>
+        </section>
+
+        <!-- 4. SPLIT LAYOUT (Form + Side Image) -->
+        <section class="contact-split-wrapper">
+            <div class="contact-split-layout">
+                
+                <!-- Left: The Form -->
+                <div class="contact-form-area">
+                    <form id="contactPageForm" action="https://formspree.io/f/mgoabrbr" method="POST" class="clean-form">
+                        
+                        <div class="clean-row">
+                            <div class="clean-group">
+                                <label>First Name</label>
+                                <input type="text" name="firstname" required>
+                            </div>
+                            <div class="clean-group">
+                                <label>Last Name</label>
+                                <input type="text" name="lastname" required>
+                            </div>
+                        </div>
+
+                        <div class="clean-row">
+                            <div class="clean-group">
+                                <label>Email Address *</label>
+                                <input type="email" name="email" required>
+                            </div>
+                            <div class="clean-group">
+                                <label>Phone Number *</label>
+                                <input type="tel" name="phone" required>
+                            </div>
+                        </div>
+
+                        <div class="clean-group">
+                            <label>Subject / Event Type</label>
+                            <input type="text" name="subject">
+                        </div>
+
+                        <div class="clean-group">
+                            <label>How can we help you?</label>
+                            <textarea name="message" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-submit-red">Send Message</button>
+                        <div id="contactMessage" class="feedback-msg"></div>
+                    </form>
+                </div>
+
+                <!-- Right: The Image -->
+                <div class="contact-image-area">
+                    <img src="Images/form-pic.jpg" alt="Event Decoration">
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Saint-Man Events</h3>
+                <p>&copy; 2025 All rights reserved.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>0701 639 517</p>
+                <p>Nairobi, Kenya</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(typeof handleFormSubmit === 'function') {
+                handleFormSubmit('contactPageForm', 'contactMessage');
+            }
+        });
+    </script>
+</body>
+</html>

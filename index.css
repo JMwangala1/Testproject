@@ -2281,3 +2281,324 @@ body.inner-page .cta-item {
         padding-top: 40px !important; 
     }
 }
+
+/* =========================================
+   CONTACT PAGE (Waridi Replica Styles)
+   ========================================= */
+
+.contact-page-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Main Heading (Top Left) */
+.contact-page-header h1 {
+    color: var(--gold-end);
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+/* The Split Layout */
+.contact-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 50% Form, 50% Image */
+    gap: 60px;
+    align-items: flex-start;
+}
+
+/* Form Area Styling */
+.contact-form-area h2 {
+    color: #e63946; /* Waridi Red-ish color OR use var(--gold-end) if you prefer */
+    color: var(--gold-end); /* Let's stick to your Gold */
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Remove center lines for this specific header */
+.contact-form-area h2::before, 
+.contact-form-area h2::after {
+    display: none !important;
+}
+
+.sub-text {
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+    color: #666;
+}
+.sub-text a {
+    text-decoration: underline;
+}
+
+/* Clean Form Inputs (Underline Style like Screenshot) */
+.clean-form label {
+    display: block;
+    font-size: 0.85rem;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.clean-form input,
+.clean-form textarea {
+    width: 100%;
+    padding: 10px 0; /* No side padding */
+    border: none;
+    border-bottom: 1px solid #ccc; /* Underline only */
+    background: transparent;
+    border-radius: 0;
+    margin-bottom: 30px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.clean-form input:focus,
+.clean-form textarea:focus {
+    outline: none;
+    border-bottom: 2px solid var(--gold-end);
+}
+
+.clean-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* The Submit Button (Red/Gold Block) */
+.btn-submit-red {
+    background: var(--gold-end); /* Saint-Man Gold */
+    color: #fff;
+    border: none;
+    padding: 15px 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit-red:hover {
+    background: var(--dark);
+}
+
+/* Right Side Image */
+.contact-image-area {
+    height: 600px;
+    width: 100%;
+}
+.contact-image-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive Contact Page */
+@media (max-width: 900px) {
+    .contact-split-layout {
+        grid-template-columns: 1fr; /* Stack vertically */
+    }
+    .contact-image-area {
+        height: 300px;
+        order: -1; /* Move image to top on mobile like screenshot example? Or keep bottom */
+    }
+    .clean-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+/* =========================================
+   CONTACT PAGE (Updated Layout)
+   ========================================= */
+
+/* 1. Contact Hero Section */
+.contact-hero {
+    height: 50vh; /* Takes up half the screen */
+    min-height: 400px;
+    background: url('Images/Hero.jpg') center/cover no-repeat; /* Uses your main Hero image */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Reusing your hero overlay styles automatically */
+.contact-hero .hero-content h1 {
+    color: var(--gold-end);
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.contact-hero .hero-content p {
+    color: #fff;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 2. The Separated Intro Div */
+.contact-intro {
+    text-align: center;
+    padding: 80px 20px 40px; /* Top padding pushes it down from Hero */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-intro h2 {
+    color: var(--dark); /* Dark Heading */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Ensure the gold line is centered */
+.contact-intro h2::before {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-intro p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.contact-intro a {
+    color: var(--gold-end);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* Small divider below intro */
+.gold-divider-center {
+    height: 2px;
+    width: 60px;
+    background: var(--gold-end);
+    margin: 30px auto 0;
+}
+
+/* 3. The Form Split Layout (Pushed Down) */
+.contact-split-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px 100px; /* Bottom padding gives space before footer */
+}
+
+.contact-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px; /* Big gap between form and image */
+    align-items: center; /* Vertically center them */
+}
+
+/* Form Styles */
+.clean-form label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.clean-form input,
+.clean-form textarea {
+    width: 100%;
+    padding: 15px 0;
+    border: none;
+    border-bottom: 1px solid #ccc; /* Clean underline style */
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: 30px;
+    transition: border-color 0.3s;
+}
+
+.clean-form input:focus,
+.clean-form textarea:focus {
+    outline: none;
+    border-bottom: 2px solid var(--gold-end);
+}
+
+.clean-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* Submit Button */
+.btn-submit-red {
+    background: var(--gold-end);
+    color: #fff;
+    border: none;
+    padding: 15px 60px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit-red:hover {
+    background: var(--dark);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Image Side */
+.contact-image-area {
+    height: 650px;
+    width: 100%;
+    box-shadow: 20px 20px 0px rgba(212, 175, 55, 0.15); /* Gold offset shadow effect */
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .contact-split-layout {
+        grid-template-columns: 1fr; /* Stack */
+        gap: 50px;
+    }
+    
+    .clean-row {
+        grid-template-columns: 1fr; /* Stack inputs */
+        gap: 0;
+    }
+    
+    .contact-image-area {
+        height: 350px;
+        order: -1; /* Image on top */
+        box-shadow: 10px 10px 0px rgba(212, 175, 55, 0.15);
+    }
+    
+    .contact-hero {
+        height: 40vh;
+    }
+    
+    .contact-intro {
+        padding: 60px 20px 20px;
+    }
+}
+
+/* =========================================
+   FIX: LEFT ALIGN CONTACT HEADER
+   ========================================= */
+
+.contact-intro {
+    text-align: left !important; /* Force text to Left */
+    max-width: 1400px !important; /* Allow it to span wide */
+    margin: 0 auto;
+    padding: 80px 20px 20px; /* Adjusted padding */
+}
+
+/* Force the Gold Line to Left */
+.contact-intro h2::before {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Force the small divider to Left */
+.gold-divider-center {
+    margin: 30px 0 0 0 !important; /* Top, Right, Bottom, Left */
+}
