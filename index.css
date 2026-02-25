@@ -2090,24 +2090,194 @@ body.inner-page .cta-item {
     }
 }
 
-/* ===== FIX: Full width gold line on mobile ===== */
+    /* ===== FIX: Full width gold line on mobile ===== */
+    @media (max-width: 768px) {
+
+    .service-title-link {
+        position: relative;
+        display: inline-block;   /* IMPORTANT: shrink to text width */
+        padding-bottom: 6px;
+        color: inherit;
+    }
+
+    .service-title-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;             /* Now 100% of TEXT only */
+        height: 3px;
+        background: var(--gold-end);
+    }
+}
+
+        /* =========================================
+        REVERT: CENTER PROCESS HEADING
+        ========================================= */
+
+        .process-intro {
+            text-align: center !important; /* Moves text back to center */
+            padding: 60px 20px 40px;       /* Balanced padding */
+            background: #fff;
+            width: 100%;
+        }
+
+        /* Force the Gold Line to Center */
+        .process-intro h2::before {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            /* This auto/auto margin trick is what centers block elements */
+        }
+
+        .process-intro h2 {
+            margin-bottom: 10px;
+        }
+
+        /* The Grid Container */
+        .process-columns {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 Equal Columns */
+            width: 100%;
+            min-height: 600px; /* Tall columns */
+        }
+
+        /* Individual Column Styling */
+        .process-col {
+            padding: 60px 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            transition: transform 0.3s;
+        }
+
+        /* Icons */
+        .p-icon {
+            margin-bottom: 30px;
+            transform: scale(1.2);
+        }
+
+        /* Typography inside columns */
+        .process-col h3 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        /* Kill the global line for these headers */
+        .process-col h3::before, .process-col h3::after {
+            display: none !important;
+        }
+
+        .process-col p {
+            font-size: 0.95rem;
+            line-height: 2.7;
+            max-width: 300px;
+        }
+
+        /* --- COLOR THEMES --- */
+
+        /* 1. GOLD COLUMN */
+        .col-gold {
+            background: var(--gold-end);
+            color: #fff;
+        }
+        .col-gold h3 { color: #fff; }
+        .col-gold p { color: #f9f9f9; }
+
+        /* 2. DARK GREY COLUMN */
+        .col-dark {
+            background: #444; /* Dark Grey */
+            color: #fff;
+        }
+        .col-dark h3 { color: var(--gold-end); }
+        .col-dark p { color: #ccc; }
+
+        /* 3. LIGHT GREY COLUMN */
+        .col-light {
+            background: #f4f4f4;
+            color: var(--dark);
+        }
+        .col-light h3 { color: var(--dark); }
+        .col-light p { color: #555; }
+
+        /* 4. BLACK COLUMN */
+        .col-black {
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .col-black h3 { color: var(--gold-end); }
+        .col-black p { color: #ccc; }
+
+        /* Process Button (Step 1) */
+        .btn-process {
+            margin-top: 150px;
+            background: #fff;
+            color: var(--gold-end);
+            border: none;
+            padding: 12px 30px;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .btn-process:hover {
+            background: var(--dark);
+            color: #fff;
+        }
+        .portfolio-section {
+    padding-bottom: 0 !important; 
+        }
+        .process-intro {
+    padding-top: 40px !important; /* Moves the "Our Process" heading up */
+    margin-top: 0 !important;
+}
+
 @media (max-width: 768px) {
+    
+    /* 1. Force 2 Columns on Mobile */
+    .process-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* This creates the 2 bars side-by-side */
+        width: 100%;
+    }
 
-.service-title-link {
-    position: relative;
-    display: inline-block;   /* IMPORTANT: shrink to text width */
-    padding-bottom: 6px;
-    color: inherit;
-}
+    /* 2. Adjust Padding for the narrower columns */
+    .process-col {
+        padding: 40px 15px; /* Reduce side padding so text fits */
+        min-height: 450px;  /* Adjust height so they look proportional */
+    }
 
-.service-title-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;             /* Now 100% of TEXT only */
-    height: 3px;
-    background: var(--gold-end);
-}
+    /* 3. Adjust Icon Size for smaller space */
+    .p-icon {
+        transform: scale(1); /* Shrink icon slightly */
+        margin-bottom: 20px;
+    }
 
+    /* 4. Fix Button Spacing on Mobile */
+    /* Since columns are narrower, reduce the 150px margin if it pushes button out */
+    .btn-process {
+        margin-top: 50px; /* Tighter spacing on phone */
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+
+        /* 1. Force the Process Section to push down */
+    #process, 
+    .process-full-width {
+        margin-top: 30px !important; /* Physically pushes the section down */
+        clear: both; /* Tells it not to sit next to floating elements */
+        padding-top: 0 !important; /* Reset padding to keep it clean */
+    }
+
+    /* 2. Give the Gallery a small bottom cushion on mobile only */
+    .portfolio-section {
+        padding-bottom: 20px !important; 
+    }
+
+    /* 3. Ensure the Heading inside remains padded as you requested */
+    .process-intro {
+        padding-top: 40px !important; 
+    }
 }
