@@ -123,7 +123,7 @@ h3 {
 }
 
 .nav-item {
-    padding: 18px 36px;
+    padding: 18px 26px;
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
@@ -2601,4 +2601,143 @@ body.inner-page .cta-item {
 /* Force the small divider to Left */
 .gold-divider-center {
     margin: 30px 0 0 0 !important; /* Top, Right, Bottom, Left */
+}
+
+/* =========================================
+   PRODUCTS SECTION: SPLIT HEADER FIX
+   ========================================= */
+
+#products .split-header {
+    display: flex;
+    justify-content: space-between; /* Push elements to far extremes */
+    align-items: flex-end; /* Align button to bottom of text */
+    text-align: left;
+    
+    /* BREAKING THE GRID RULES */
+    max-width: 100% !important; /* Force full width */
+    width: 100%;
+    
+    /* Positioning near edges */
+    padding-left: 40px;  /* Distance from Left Screen Edge */
+    padding-right: 40px; /* Distance from Right Screen Edge */
+    
+    margin-bottom: 60px;
+    box-sizing: border-box; /* Ensures padding doesn't cause scrollbar */
+}
+/* 2. The Text Block */
+#products .header-text {
+    max-width: 600px; /* Keeps readability while staying left */
+}
+
+/* Force Gold Line Left */
+#products h2::before {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* 4. Paragraph Styling */
+#products .header-text p {
+    margin-bottom: 0; /* Remove bottom margin so it aligns with button */
+    color: #555;
+    line-height: 1.8;
+}
+
+/* 5. MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+   #products .split-header {
+        padding-left: 20px;
+        padding-right: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    #products .header-text {
+        max-width: 100%;
+    }
+
+    /* Optional: Make button full width on mobile for easier clicking */
+    #products .btn-primary {
+        width: 100%; 
+        text-align: center;
+    }
+}
+
+/* =========================================
+   WARIDI LAYOUT FIX (Wide Text, High Button)
+   ========================================= */
+
+#products .waridi-header-wrapper {
+    width: 100%;
+    /* Pull content to the edges (Widescreen look) */
+    padding: 0 40px; 
+    margin-bottom: 60px;
+    box-sizing: border-box;
+}
+
+/* 1. The Top Row (Heading + Button) */
+#products .header-top {
+    display: flex;
+    justify-content: space-between; /* Pushes Title Left, Button Right */
+    align-items: center; /* Aligns Button vertically with the Heading */
+    width: 100%;
+    margin-bottom: 25px; /* Space between Heading and Paragraph */
+    flex-wrap: wrap; /* Safety for smaller screens */
+    gap: 20px;
+}
+
+/* 2. Heading Adjustments */
+#products .header-top h2 {
+    margin-bottom: 0; /* Remove bottom margin so it aligns with button */
+    text-align: left;
+}
+
+/* Force Gold Line to Left */
+#products h2::before {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* 3. The Paragraph (Freed to Stretch) */
+#products .header-desc {
+    text-align: left;
+    color: #555;
+    font-size: 1.05rem; /* Slightly larger for readability */
+    line-height: 1.8;
+    
+    /* Allow it to stretch wide, but keep it readable (not infinite) */
+    max-width: 900px; 
+    margin-top: 0;
+    
+    /* Ensure no unwanted wrapping */
+    white-space: normal; 
+}
+
+/* 4. Button Fix */
+#products .btn-primary {
+    /* Ensure button doesn't shrink */
+    flex-shrink: 0;
+    margin-top: 0; /* Remove auto-margin if present */
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    #products .waridi-header-wrapper {
+        padding: 0 20px;
+    }
+
+    #products .header-top {
+        flex-direction: column; /* Stack Title and Button */
+        align-items: flex-start; /* Align Left */
+    }
+
+    #products .header-desc {
+        max-width: 100%;
+        font-size: 0.95rem;
+    }
+    
+    /* Make button fit width on mobile */
+    #products .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
 }
