@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // C. NEW: Contact Page Form (ADD THIS LINE) <---
     handleFormSubmit('contactPageForm', 'contactMessage');
 
-/* =========================================
+ /* =========================================
        SCROLL ANIMATION (Images Only - Row Sequence)
     ========================================= */
     
@@ -288,6 +288,20 @@ document.addEventListener('DOMContentLoaded', () => {
     serviceImages.forEach(image => {
         imageObserver.observe(image);
     }); 
+
+    /* =========================================
+       FOOTER: GO BACK UP
+    ========================================= */
+    const goTopBtn = document.getElementById('goTopBtn');
+    if (goTopBtn) {
+        goTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 
 });
 

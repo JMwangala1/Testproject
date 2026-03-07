@@ -2741,3 +2741,137 @@ body.inner-page .cta-item {
         text-align: center;
     }
 }
+
+/* =========================================
+   WARIDI FOOTER (Final Integrated Version)
+   ========================================= */
+
+.waridi-footer {
+    background: #fff;
+    /* INCREASED PADDING: Gives the footer the height you wanted */
+    padding: 60px 40px 50px 40px; 
+    border-top: 1px solid #eee;
+    
+    /* Gap above footer for the floating logo part */
+    margin-top: 130px; 
+    
+    /* Anchor for the absolute logo */
+    position: relative; 
+}
+
+.footer-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Vertically centers the side items */
+    justify-content: space-between; /* Pushes Left, Center, Right apart */
+}
+
+/* 1. SOCIAL ICONS (Left Side) */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.social-icon:hover {
+    background: var(--gold-end);
+    transform: translateY(-3px);
+}
+
+/* 2. CENTER BRANDING (The Floating Logic) */
+.footer-center {
+    position: static; /* Let items inside position relative to parent */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo {
+    /* Take out of flow */
+    position: absolute;
+    
+    /* Position: Half in, Half out */
+    top: -10px; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* SIZE */
+    height: 200px;
+    width: auto;
+    
+    /* Optional: Subtle drop shadow for depth */
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.footer-copy {
+    /* Push text down so it doesn't hit the bottom of the logo */
+    margin-top: 90px; 
+    
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+/* 3. RIGHT ACTION (Go Up) */
+.footer-right {
+    text-align: right;
+}
+
+.go-up-link {
+    font-weight: 700;
+    color: #000;
+    font-size: 0.95rem;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    transition: color 0.3s;
+}
+
+.go-up-link:hover {
+    color: var(--gold-end);
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .waridi-footer {
+        padding: 60px 20px 40px; /* Adjusted mobile padding */
+        margin-top: 80px;
+    }
+
+    .footer-wrapper {
+        flex-direction: column; /* Stack vertically */
+        gap: 30px;
+    }
+
+    /* REORDER: Logo Top, Socials Middle, Link Bottom */
+    .footer-center { order: 1; }
+    .footer-socials { order: 2; }
+    .footer-right   { order: 3; }
+
+    /* RESET LOGO FOR MOBILE (Stop floating) */
+    .footer-logo {
+        position: relative; 
+        top: 0;
+        left: 0;
+        transform: none;
+        height: 140px; /* Smaller size for phone */
+        margin-bottom: 10px;
+    }
+    
+    .footer-copy {
+        margin-top: 0; /* Reset margin since logo isn't floating */
+    }
+}
