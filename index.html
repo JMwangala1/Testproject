@@ -19,6 +19,9 @@
     <link rel="manifest" href="Images/site.webmanifest">
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Swiper 3D Carousel CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
 
@@ -438,18 +441,121 @@
     </div>
 </section>
 
-        <!-- 6. NEWS/OFFERS: Content Depth -->
+        <!-- 6. NEWS/OFFERS: 3D Tunnel Carousel -->
         <section id="news" class="news-section">
             <div class="news-content">
-                <h2>Seasonal Updates</h2>
-                <div class="news-items">
-                    <div class="news-item">
-                        <h3>🎉 Full Wedding Packages</h3>
-                        <p>Now booking for 2026! Contact us for early-bird discounts on full catering and decor packages.</p>
-                    </div>
-                    <div class="news-item">
-                        <h3>🎄 Year-End Specials</h3>
-                        <p>Planning a corporate Christmas party? Check out our limited-time buffet offers.</p>
+                <h2>Seasonal Exclusives</h2>
+                <p class="sub-heading">Swipe to explore our latest packages and events.</p>
+                
+                <!-- The "Tunnel" Container -->
+                <div class="tunnel-wrapper">
+                    <!-- Swiper Main Container -->
+                    <div class="swiper newsSwiper">
+                        <div class="swiper-wrapper">
+                            
+                            <!-- Card 1: Yacht Party -->
+                            <div class="swiper-slide news-card">
+                                <div class="card-glow"></div>
+                                <h3>🛥️ All White Yacht Cruise</h3>
+                                <span class="card-date">Sun 05th April 2026 | La Marina Mtwapa</span>
+                                <p>Join the Machweo Sunset Cruise! Includes unlimited Seafood Platter, Champagne, and DJ Jabari on the decks. VIP Transport included.</p>
+                                <div class="card-price">From KSH 3,500</div>
+                                <a href="contact.html" class="btn-card">Reserve Slot</a>
+                            </div>
+
+                            <!-- Card 2: Ramadan -->
+                            <div class="swiper-slide news-card">
+                                <div class="card-glow"></div>
+                                <h3>🌙 Ramadan Iftar Specials</h3>
+                                <span class="card-date">Corporate & Private Delivery</span>
+                                <p>Share the blessings. Order our Swahili Snack Box or The Royal Feast for your Iftar gatherings. We also deliver Sadaqah packages to Mosques.</p>
+                                <div class="card-price">From KSH 450 / pax</div>
+                                <a href="order-seafood.html" class="btn-card">Order Iftar</a>
+                            </div>
+
+                            <!-- Card 3: Seafood Platter -->
+                            <div class="swiper-slide news-card">
+                                <div class="card-glow"></div>
+                                <h3>🦞 The Coastal Feast</h3>
+                                <span class="card-date">Pre-order 24Hrs in Advance</span>
+                                <p>Dive into decadence. Fresh Fish, Prawns, Octopus, Calamari, and whole Rock Lobsters delivered hot to your table. Ideal for weekend hosting.</p>
+                                <div class="card-price">From KSH 3,500</div>
+                                <a href="order-seafood.html" class="btn-card">Order Platter</a>
+                            </div>
+
+                            <!-- Card 4: Weddings -->
+                            <div class="swiper-slide news-card">
+                                <div class="card-glow"></div>
+                                <h3>💍 2026 Wedding Packages</h3>
+                                <span class="card-date">Now Booking</span>
+                                <p>Planning your big day? Contact us for early-bird discounts on full-service wedding catering, tent setups, and floral styling.</p>
+                                <div class="card-price">Custom Quote</div>
+                                <a href="contact.html" class="btn-card">Get Quote</a>
+                            </div>
+
+                            <!-- Card 5: Corporate -->
+                            <div class="swiper-slide news-card">
+                                <div class="card-glow"></div>
+                                <h3>🏢 Corporate End of Year</h3>
+                                <span class="card-date">Limited Dates Available</span>
+                                <p>Reward your team with a premium buffet setup. We provide complete event management, audiovisuals, and world-class service.</p>
+                                <div class="card-price">Custom Quote</div>
+                                <a href="contact.html" class="btn-card">Inquire Now</a>
+                            </div>
+
+                                                        <!-- Card 1: Yacht Party -->
+                            <div class="swiper-slide news-card">
+                                <div class="card-glow"></div>
+                                <h3>🛥️ All White Yacht Cruise</h3>
+                                <span class="card-date">Sun 05th April 2026 | La Marina Mtwapa</span>
+                                <p>Join the Machweo Sunset Cruise! Includes unlimited Seafood Platter, Champagne, and DJ Jabari on the decks. VIP Transport included.</p>
+                                <div class="card-price">From KSH 3,500</div>
+                                <a href="contact.html" class="btn-card">Reserve Slot</a>
+                            </div>
+
+                            <!-- Card 2: Ramadan -->
+                            <div class="swiper-slide news-card">
+                                <div class="card-glow"></div>
+                                <h3>🌙 Ramadan Iftar Specials</h3>
+                                <span class="card-date">Corporate & Private Delivery</span>
+                                <p>Share the blessings. Order our Swahili Snack Box or The Royal Feast for your Iftar gatherings. We also deliver Sadaqah packages to Mosques.</p>
+                                <div class="card-price">From KSH 450 / pax</div>
+                                <a href="order-seafood.html" class="btn-card">Order Iftar</a>
+                            </div>
+
+                            <!-- Card 3: Seafood Platter -->
+                            <div class="swiper-slide news-card">
+                                <div class="card-glow"></div>
+                                <h3>🦞 The Coastal Feast</h3>
+                                <span class="card-date">Pre-order 24Hrs in Advance</span>
+                                <p>Dive into decadence. Fresh Fish, Prawns, Octopus, Calamari, and whole Rock Lobsters delivered hot to your table. Ideal for weekend hosting.</p>
+                                <div class="card-price">From KSH 3,500</div>
+                                <a href="order-seafood.html" class="btn-card">Order Platter</a>
+                            </div>
+
+                            <!-- Card 4: Weddings -->
+                            <div class="swiper-slide news-card">
+                                <div class="card-glow"></div>
+                                <h3>💍 2026 Wedding Packages</h3>
+                                <span class="card-date">Now Booking</span>
+                                <p>Planning your big day? Contact us for early-bird discounts on full-service wedding catering, tent setups, and floral styling.</p>
+                                <div class="card-price">Custom Quote</div>
+                                <a href="contact.html" class="btn-card">Get Quote</a>
+                            </div>
+
+                            <!-- Card 5: Corporate -->
+                            <div class="swiper-slide news-card">
+                                <div class="card-glow"></div>
+                                <h3>🏢 Corporate End of Year</h3>
+                                <span class="card-date">Limited Dates Available</span>
+                                <p>Reward your team with a premium buffet setup. We provide complete event management, audiovisuals, and world-class service.</p>
+                                <div class="card-price">Custom Quote</div>
+                                <a href="contact.html" class="btn-card">Inquire Now</a>
+                            </div>
+
+                        </div>
+                        <!-- Pagination Dots -->
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>
@@ -576,7 +682,11 @@
             </div>
         </footer>
     
-    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script> 
+     <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script> 
+
+     <!-- Swiper 3D Carousel JS -->
+     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script src="script.js"></script>
 </body>
 </html>

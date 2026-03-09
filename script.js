@@ -303,7 +303,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-});
+        /* =========================================
+            CONTINUOUS MARQUEE CAROUSEL (SWIPER.JS)
+            ========================================= */
+            if (typeof Swiper !== 'undefined' && document.querySelector('.newsSwiper')) {
+                const newsSwiper = new Swiper('.newsSwiper', {
+                    slidesPerView: 'auto',      // Cards determine their own width
+                    spaceBetween: 30,           // 30px gap between cards
+                    loop: true,                 // Infinite looping
+                    loopedSlides: 5,            // Forces loop even if screen is wide
+                    freeMode: true,             // Enables smooth continuous scrolling
+                    speed: 5000,                // Time it takes to move to the next slide (4 seconds)
+                    
+                    // The Marquee Engine
+                    autoplay: {
+                        delay: 0,               // ZERO delay = no stopping/blinking
+                        disableOnInteraction: false, 
+                        pauseOnMouseEnter: true // Pauses beautifully when user hovers to read/click
+                    },
+                });
+            }
+
+        });
 
 /* === HERO STAGGERED ANIMATION LOGIC === */
 window.addEventListener('load', () => {

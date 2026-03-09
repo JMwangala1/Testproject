@@ -512,10 +512,7 @@ section { margin-bottom: 0; }
 .reviews-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
 .review-card { background: #fff; padding: 40px; max-width: 400px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
-/* News */
-.news-section { background: var(--dark); color: #fff; padding: 80px 20px; text-align: center; }
-.news-item { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 8px; margin: 10px; width: 300px; display: inline-block; vertical-align: top; }
-.news-section h2 { color: var(--gold-end); }
+
 
 /* Contact */
 .contact-wrapper { padding: 100px 20px; }
@@ -2873,5 +2870,177 @@ body.inner-page .cta-item {
     
     .footer-copy {
         margin-top: 0; /* Reset margin since logo isn't floating */
+    }
+}
+/* =========================================
+   MINDFITI STYLE: CONTINUOUS MARQUEE & DARK CARDS
+   ========================================= */
+
+.news-section {
+    background: transparent; /* Blends with your white page */
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.news-section h2 {
+    color: var(--gold-end);
+    margin-bottom: 10px;
+}
+
+.sub-heading {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 50px;
+}
+
+/* --- 1. THE BLACK SHADOW DOORS --- */
+.tunnel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1300px; /* Contains the doors nicely on screen */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* The physical dark fades on the left and right */
+.tunnel-wrapper::before,
+.tunnel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px; /* Width of the shadow tunnel */
+    z-index: 10;
+    pointer-events: none; /* So you can click buttons under it */
+}
+
+/* Left Door */
+.tunnel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+}
+
+/* Right Door */
+.tunnel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+}
+
+/* --- 2. THE CONTINUOUS ENGINE --- */
+.newsSwiper {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+/* CRITICAL: Forces linear movement instead of stop-and-go */
+.newsSwiper .swiper-wrapper {
+    transition-timing-function: linear !important; 
+}
+
+.newsSwiper .swiper-pagination {
+    display: none; /* Hide dots for continuous flow */
+}
+
+/* --- 3. DARK LUXURY CARDS --- */
+.news-card {
+    /* Dark Theme Setup */
+    background: #111; 
+    border: 1px solid #333;
+    
+    /* Strict Narrow Width */
+    width: 280px !important; 
+    padding: 30px 25px; 
+    border-radius: 12px; 
+    text-align: left;
+    
+    /* Shadows & Layout */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: auto; 
+}
+
+/* Hover Effect */
+.news-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold-end);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2); 
+}
+
+/* --- 4. DARK CARD TYPOGRAPHY --- */
+.news-card h3 {
+    color: var(--gold-end); /* Gold headers on black */
+    font-size: 1.1rem; 
+    margin-bottom: 6px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+/* Kill generic header lines inside cards */
+.news-card h3::before, .news-card h3::after {
+    display: none !important;
+}
+
+.card-date {
+    display: inline-block;
+    font-size: 0.75rem; 
+    color: #999; /* Light grey for contrast */
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.news-card p {
+    font-size: 0.85rem; 
+    color: #ccc; /* Readable light grey text */
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Pushes button down */
+}
+
+.card-price {
+    font-family: var(--font-head);
+    font-size: 1.1rem; 
+    font-weight: 700;
+    color: #fff; /* Bright white price */
+    margin-bottom: 15px;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
+
+/* --- 5. BUTTON INSIDE CARD --- */
+.btn-card {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--gold-end);
+    color: var(--gold-end);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem; 
+    border-radius: 4px;
+    transition: 0.3s;
+    margin-top: auto; 
+}
+
+.btn-card:hover {
+    background: var(--gold-end);
+    color: #000;
+}
+
+/* --- 6. MOBILE OVERRIDES --- */
+@media (max-width: 768px) {
+    /* Make the shadow doors smaller so they don't cover the whole screen */
+    .tunnel-wrapper::before,
+    .tunnel-wrapper::after {
+        width: 60px; 
     }
 }
