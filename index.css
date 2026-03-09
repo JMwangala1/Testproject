@@ -2929,40 +2929,35 @@ body.inner-page .cta-item {
     background: linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
 }
 
-/* --- 2. THE CONTINUOUS ENGINE --- */
+/* 2. FORCE LINEAR MOVEMENT & EQUAL HEIGHTS */
 .newsSwiper {
-    width: 100%;
     padding-top: 20px;
     padding-bottom: 50px;
 }
 
-/* CRITICAL: Forces linear movement instead of stop-and-go */
 .newsSwiper .swiper-wrapper {
-    transition-timing-function: linear !important; 
+    /* Removed !important so Swiper can instantly stop it on hover without delay */
+    align-items: stretch !important; 
+    transition-timing-function: linear !important; /* Keeps the flow smooth, no snapping */
+    display: flex !important;
 }
 
-.newsSwiper .swiper-pagination {
-    display: none; /* Hide dots for continuous flow */
-}
-
-/* --- 3. DARK LUXURY CARDS --- */
+/* 3. DARK LUXURY CARDS */
 .news-card {
-    /* Dark Theme Setup */
     background: #111; 
     border: 1px solid #333;
-    
-    /* Strict Narrow Width */
     width: 280px !important; 
     padding: 30px 25px; 
-    border-radius: 12px; 
+    border-radius: 12px;
     text-align: left;
-    
-    /* Shadows & Layout */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); 
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: auto; 
+
+    
+    /* THE ALIGNMENT ENGINE */
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important; /* Overrides Swiper's default height */
 }
 
 /* Hover Effect */
@@ -3001,10 +2996,11 @@ body.inner-page .cta-item {
     color: #ccc; /* Readable light grey text */
     line-height: 1.6;
     margin-bottom: 20px;
-    flex-grow: 1; /* Pushes button down */
+     flex-grow: 1 !important; 
 }
 
 .card-price {
+    margin-top: 0; /* This pushes the price AND the button perfectly to the bottom */
     font-family: var(--font-head);
     font-size: 1.1rem; 
     font-weight: 700;
@@ -3028,7 +3024,7 @@ body.inner-page .cta-item {
     font-size: 0.8rem; 
     border-radius: 4px;
     transition: 0.3s;
-    margin-top: auto; 
+    margin-top: 0; 
 }
 
 .btn-card:hover {
