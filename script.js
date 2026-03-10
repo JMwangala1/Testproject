@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ========================================= */
     const track = document.querySelector('.testimonial-track');
     
-    // SAFETY CHECK: Only run if the track exists on this specific page
-    if (track) { 
+     // SAFETY CHECK: Only run if the track exists on this specific page
+     if (track) { 
         const slides = Array.from(track.children);
         const nextButton = document.querySelector('.next-btn');
         const prevButton = document.querySelector('.prev-btn');
@@ -123,9 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* ================================
+        /* ================================
        MOBILE HAMBURGER MENU
-    ================================= */
+        ================================= */
 
         const hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -303,47 +303,82 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-/* =========================================
+    /* =========================================
        CONTINUOUS MARQUEE (Perfect Pause/Resume Fix)
     ========================================= */
-    if (typeof Swiper !== 'undefined' && document.querySelector('.newsSwiper')) {
-        const newsSwiper = new Swiper('.newsSwiper', {
-            slidesPerView: 'auto',      
-            spaceBetween: 30,           
-            loop: true,                 
-            speed: 3500, // The steady glide speed             
-            freeMode: true,             
-            mousewheel: {
-                forceToAxis: true, 
-                sensitivity: 1,
-            },
-            autoplay: {
-                delay: 0,               
-                disableOnInteraction: false, 
-            },
-        });
+if (typeof Swiper !== 'undefined' && document.querySelector('.newsSwiper')) {
+    const newsSwiper = new Swiper('.newsSwiper', {
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+        loop: true,
+        speed: 3000,
+        freeMode: {
+            enabled: true,
+            momentum: false,
+        },
+        mousewheel: { forceToAxis: true, sensitivity: 1 },
+        autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+        },
+        pagination: {  // Init HTML pagination (harmless)
+            el: '.swiper-pagination',
+            clickable: false,
+        },
+    });
 
-        const swiperWrapper = document.querySelector('.newsSwiper');
-        
-        // 1. INSTANT STOP
-        swiperWrapper.addEventListener('mouseenter', () => {
-            newsSwiper.autoplay.stop();
-            // Freeze the exact pixel location
-            newsSwiper.setTransition(0);
-            newsSwiper.setTranslate(newsSwiper.getTranslate());
-        });
+    const SPEED     = 3000;
+    const swiperEl  = document.querySelector('.newsSwiper');
+    const wrapperEl = newsSwiper.wrapperEl;
 
-        // 2. SMOOTH RESUME
-        swiperWrapper.addEventListener('mouseleave', () => {
-            // Restore the speed
-            newsSwiper.setTransition(3500);
-            // Turn the engine back on
-            newsSwiper.autoplay.start();
-            
-            // THE WAKE-UP KICK: Forces the engine to calculate the next movement instantly
-            newsSwiper.slideNext(); 
-        });
-    }
+    // ── HOVER: ULTRA-INSTANT FREEZE ────────────────────────────────────────────
+    swiperEl.addEventListener('mouseenter', () => {
+        newsSwiper.autoplay.stop();
+        newsSwiper.setTransition(0);
+        newsSwiper.velocity = 0;  // Kill freeMode velocity INSTANTLY
+    });
+
+    swiperEl.addEventListener('mouseleave', () => {
+        newsSwiper.setTransition(SPEED);
+        newsSwiper.autoplay.start();
+    });
+
+    // ── DRAG: HARD STOP RIGHT-DRAG AT 10 CARDS + IMMEDIATE RESUME ─────────────
+    const CARD_SLOT = 280 + 30;
+    const MAX_DRAG  = CARD_SLOT * 10;
+    let dragStartTranslate = null;
+
+    newsSwiper.on('touchStart', () => {
+        dragStartTranslate = newsSwiper.getTranslate();
+        newsSwiper.autoplay.stop();
+        newsSwiper.setTransition(0);
+        newsSwiper.allowTouchMove = true;
+        newsSwiper.velocity = 0;  // Pre-empt velocity
+    });
+
+    newsSwiper.on('touchMove', () => {
+        if (dragStartTranslate === null) return;
+
+        const draggedRight = newsSwiper.getTranslate() - dragStartTranslate;  // >0: RIGHT drag (peek ahead)
+        const maxAllowedTranslate = dragStartTranslate + MAX_DRAG;  // Least negative allowed
+
+        if (newsSwiper.getTranslate() > maxAllowedTranslate) {  // Exceeded right?
+            newsSwiper.setTranslate(maxAllowedTranslate);  // Clamp back
+            newsSwiper.velocity = 0;
+            newsSwiper.allowTouchMove = false;  // BLOCK gesture continuation
+        }
+    });
+
+    newsSwiper.on('touchEnd', () => {
+        dragStartTranslate = null;
+        newsSwiper.allowTouchMove = true;
+        newsSwiper.setTransition(SPEED);
+        newsSwiper.autoplay.start();  // IMMEDIATE resume
+    });
+}
+
+
+
 
 });
 

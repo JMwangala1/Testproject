@@ -2881,7 +2881,7 @@ body.inner-page .cta-item {
     padding: 80px 0;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     z-index: 5;
 }
 
@@ -2902,7 +2902,7 @@ body.inner-page .cta-item {
     width: 100%;
     max-width: 1300px; /* Contains the doors nicely on screen */
     margin: 0 auto;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* The physical dark fades on the left and right */
@@ -2917,20 +2917,59 @@ body.inner-page .cta-item {
     pointer-events: none; /* So you can click buttons under it */
 }
 
-/* Left Door */
-.tunnel-wrapper::before {
-    left: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+/* Kill the old pseudo-element approach */
+.tunnel-wrapper::before,
+.tunnel-wrapper::after {
+    display: none !important;
 }
 
-/* Right Door */
-.tunnel-wrapper::after {
+/* The "door frame" panels — tall, narrow, dark walls */
+.news-fade-left,
+.news-fade-right {
+    position: absolute;
+    top: -40px;        /* Taller than the cards — stretches above */
+    bottom: -40px;     /* And below */
+    width: 160px;
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* LEFT DOOR: Dark wall on left, fades into transparency going right */
+.news-fade-left {
+    left: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 1.0)   0%,    /* Solid black wall */
+        rgba(0, 0, 0, 0.85)  20%,   /* Deep shadow cast onto card */
+        rgba(0, 0, 0, 0.3)   60%,   /* Shadow fade */
+        rgba(0, 0, 0, 0.0)   100%   /* Transparent — open space */
+    );
+}
+
+/* RIGHT DOOR: Mirror of left */
+.news-fade-right {
     right: 0;
-    background: linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(
+        to left,
+        rgba(0, 0, 0, 1.0)   0%,
+        rgba(0, 0, 0, 0.85)  20%,
+        rgba(0, 0, 0, 0.3)   60%,
+        rgba(0, 0, 0, 0.0)   100%
+    );
+}
+
+@media (max-width: 768px) {
+    .news-fade-left,
+    .news-fade-right {
+        width: 70px;
+        top: -20px;
+        bottom: -20px;
+    }
 }
 
 /* 2. FORCE LINEAR MOVEMENT & EQUAL HEIGHTS */
 .newsSwiper {
+    overflow: hidden !important; /* Cards still get clipped cleanly at swiper boundary */
     padding-top: 20px;
     padding-bottom: 50px;
 }
@@ -3039,4 +3078,20 @@ body.inner-page .cta-item {
     .tunnel-wrapper::after {
         width: 60px; 
     }
+}
+
+.newsSwiper .swiper-wrapper {
+    align-items: stretch !important;
+    /* Remove linear !important — let Swiper handle (prevents micro-easing at 0ms) */
+    /* transition-timing-function: linear !important; */  /* ← COMMENT OUT OR DELETE */
+    display: flex !important;
+}
+
+/* Kill card hover transform during slider drag/hover (reduces perceived delay/jitter) */
+.newsSwiper:hover .news-card {
+    transform: none !important;  /* Pause card hovers while slider active */
+}
+
+.news-card:hover {
+    transform: translateY(-8px);  /* Re-enable only on direct card hover if needed */
 }
