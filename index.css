@@ -2977,7 +2977,6 @@ body.inner-page .cta-item {
 .newsSwiper .swiper-wrapper {
     /* Removed !important so Swiper can instantly stop it on hover without delay */
     align-items: stretch !important; 
-    transition-timing-function: linear !important; /* Keeps the flow smooth, no snapping */
     display: flex !important;
 }
 

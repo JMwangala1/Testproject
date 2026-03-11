@@ -303,81 +303,121 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* =========================================
-       CONTINUOUS MARQUEE (Perfect Pause/Resume Fix)
+/* =========================================
+       MINDFITI STYLE: HYBRID MARQUEE (Walls + Endless)
     ========================================= */
-if (typeof Swiper !== 'undefined' && document.querySelector('.newsSwiper')) {
-    const newsSwiper = new Swiper('.newsSwiper', {
-        slidesPerView: 'auto',
-        spaceBetween: 30,
-        loop: true,
-        speed: 3000,
-        freeMode: {
-            enabled: true,
-            momentum: false,
-        },
-        mousewheel: { forceToAxis: true, sensitivity: 1 },
-        autoplay: {
-            delay: 0,
-            disableOnInteraction: false,
-        },
-        pagination: {  // Init HTML pagination (harmless)
-            el: '.swiper-pagination',
-            clickable: false,
-        },
-    });
+    if (typeof Swiper !== 'undefined' && document.querySelector('.newsSwiper')) {
+        
+        const swiperEl = document.querySelector('.newsSwiper');
+        const wrapper = document.querySelector('.newsSwiper .swiper-wrapper');
+        const SPEED = 4000; 
+        
+        // THE MAGIC FLAG: Tracks if a human is touching/hovering
+        let isUserInteracting = false; 
 
-    const SPEED     = 3000;
-    const swiperEl  = document.querySelector('.newsSwiper');
-    const wrapperEl = newsSwiper.wrapperEl;
+        const newsSwiper = new Swiper('.newsSwiper', {
+            slidesPerView: 'auto',
+            spaceBetween: 30,
+            
+            // SOLID WALLS ON BOTH SIDES
+            loop: false, 
+            
+            speed: SPEED,
+            freeMode: {
+                enabled: true,
+                momentum: true, 
+                momentumBounce: true, // The premium bounce when hitting the wall
+            },
+            grabCursor: true,
+            mousewheel: { forceToAxis: true, sensitivity: 1 },
+            
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            
+            on: {
+                init: function () {
+                    wrapper.style.transitionTimingFunction = 'linear';
+                },
+                
+                // 1. FINGER TOUCHES SCREEN
+                touchStart: function () {
+                    isUserInteracting = true; // Human is in control
+                    wrapper.style.transitionTimingFunction = 'ease-out';
+                    this.autoplay.stop();
+                },
+                
+                // 2. FINGER LEAVES SCREEN
+                touchEnd: function () {
+                    // Wait 1 full second for the wall bounce/momentum to finish
+                    setTimeout(() => {
+                        if (!swiperEl.matches(':hover')) {
+                            isUserInteracting = false; // Machine takes back control
+                            
+                            // If they threw it against the right wall, teleport to the start invisibly
+                            if (this.isEnd) {
+                                this.setTransition(0);
+                                this.slideTo(0, 0);
+                            }
+                            
+                            // Resume endless flow
+                            wrapper.style.transitionTimingFunction = 'linear';
+                            this.setTransition(SPEED);
+                            this.autoplay.start();
+                        }
+                    }, 1000); 
+                },
 
-    // ── HOVER: ULTRA-INSTANT FREEZE ────────────────────────────────────────────
-    swiperEl.addEventListener('mouseenter', () => {
-        newsSwiper.autoplay.stop();
-        newsSwiper.setTransition(0);
-        newsSwiper.velocity = 0;  // Kill freeMode velocity INSTANTLY
-    });
+                // 3. THE WALL DETECTION
+                reachEnd: function () {
+                    // If nobody is touching it (Autoplay), teleport instantly so it looks endless.
+                    // If a human IS touching it, do nothing, let them hit the wall and bounce!
+                    if (!isUserInteracting) {
+                        setTimeout(() => {
+                            this.setTransition(0);
+                            this.slideTo(0, 0); 
+                            
+                            setTimeout(() => {
+                                wrapper.style.transitionTimingFunction = 'linear';
+                                this.setTransition(SPEED);
+                                this.autoplay.start();
+                            }, 50);
+                        }, 0);
+                    }
+                }
+            }
+        });
 
-    swiperEl.addEventListener('mouseleave', () => {
-        newsSwiper.setTransition(SPEED);
-        newsSwiper.autoplay.start();
-    });
+        // ─── DESKTOP: INSTANT HOVER FREEZE ──────────────────────────
+        swiperEl.addEventListener('mouseenter', () => {
+            isUserInteracting = true; // Human is in control
+            newsSwiper.autoplay.stop();
+            newsSwiper.setTransition(0);
+            newsSwiper.setTranslate(newsSwiper.getTranslate());
+            wrapper.style.transitionTimingFunction = 'ease-out'; 
+        });
 
-    // ── DRAG: HARD STOP RIGHT-DRAG AT 10 CARDS + IMMEDIATE RESUME ─────────────
-    const CARD_SLOT = 280 + 30;
-    const MAX_DRAG  = CARD_SLOT * 10;
-    let dragStartTranslate = null;
-
-    newsSwiper.on('touchStart', () => {
-        dragStartTranslate = newsSwiper.getTranslate();
-        newsSwiper.autoplay.stop();
-        newsSwiper.setTransition(0);
-        newsSwiper.allowTouchMove = true;
-        newsSwiper.velocity = 0;  // Pre-empt velocity
-    });
-
-    newsSwiper.on('touchMove', () => {
-        if (dragStartTranslate === null) return;
-
-        const draggedRight = newsSwiper.getTranslate() - dragStartTranslate;  // >0: RIGHT drag (peek ahead)
-        const maxAllowedTranslate = dragStartTranslate + MAX_DRAG;  // Least negative allowed
-
-        if (newsSwiper.getTranslate() > maxAllowedTranslate) {  // Exceeded right?
-            newsSwiper.setTranslate(maxAllowedTranslate);  // Clamp back
-            newsSwiper.velocity = 0;
-            newsSwiper.allowTouchMove = false;  // BLOCK gesture continuation
-        }
-    });
-
-    newsSwiper.on('touchEnd', () => {
-        dragStartTranslate = null;
-        newsSwiper.allowTouchMove = true;
-        newsSwiper.setTransition(SPEED);
-        newsSwiper.autoplay.start();  // IMMEDIATE resume
-    });
-}
-
-
+        // ─── DESKTOP: SMOOTH RESUME ON LEAVE ─────────────────────────
+        swiperEl.addEventListener('mouseleave', () => {
+            if (!newsSwiper.touches.isTouched) {
+                isUserInteracting = false; // Machine takes back control
+                
+                // If they hovered while it was resting against the right wall
+                if (newsSwiper.isEnd) {
+                    newsSwiper.setTransition(0);
+                    newsSwiper.slideTo(0, 0);
+                }
+                
+                wrapper.style.transitionTimingFunction = 'linear';
+                newsSwiper.setTransition(SPEED);
+                newsSwiper.autoplay.start();
+                
+                // Tiny nudge to wake the engine up
+                newsSwiper.setTranslate(newsSwiper.getTranslate() - 1);
+            }
+        });
+    }
 
 
 });
