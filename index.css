@@ -3094,3 +3094,163 @@ body.inner-page .cta-item {
 .news-card:hover {
     transform: translateY(-8px);  /* Re-enable only on direct card hover if needed */
 }
+
+/* =========================================
+   ABOUT SECTION: THE PINNED PAPER & SLIM ODOMETER
+   ========================================= */
+
+.pinned-section {
+    padding: 60px 20px; /* REDUCED PADDING: Makes it 50% height */
+    min-height: 55vh; 
+    background: transparent; /* Allows surrounding sections to blend */
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+}
+
+.pinned-container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* --- LEFT: THE PINNED SCRAP PAPER --- */
+.paper-note {
+    width: 45%;
+    background: #FDFBF7; /* Vintage Ivory/Cream Paper Color */
+    padding: 60px 40px 50px;
+    position: relative;
+    z-index: 10;
+    /* The overlap trick */
+    margin-right: -10%; 
+    margin-top: -30px;
+    /* Paper styling */
+    border-radius: 2px 15px 2px 2px; /* Slight imperfection */
+    box-shadow: 10px 20px 40px rgba(0,0,0,0.15); /* Deep shadow */
+    border: 1px solid #f0eae1;
+}
+
+/* The Realistic Brass Push-Pin */
+.brass-pin {
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 30% 30%, #ffd700, #b59020, #5c4708);
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 2px 5px 6px rgba(0,0,0,0.4), inset -2px -2px 4px rgba(0,0,0,0.3);
+}
+
+/* Paper Typography */
+.lc-subtitle { font-family: var(--font-head); font-style: italic; color: #888; font-size: 1.2rem; display: block; margin-bottom: 5px; text-align: center; }
+.lc-title { font-size: clamp(2.2rem, 4vw, 3rem); color: var(--dark); line-height: 1.1; margin-bottom: 20px; text-align: center; }
+.lc-title::before, .lc-title::after { display: none !important; }
+
+/* Editorial Stroke */
+.stroke-text {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--gold-end);
+    display: block;
+}
+
+.lc-desc { color: #555; font-size: 1.05rem; line-height: 1.8; margin-bottom: 25px; text-align: center; }
+.paper-note .btn-primary { display: block; width: fit-content; margin: 0 auto; }
+
+/* --- THE ANIMATION: PENDULUM SWING --- */
+/* The paper drops in and swings from the pin */
+.paper-swing-anim {
+    opacity: 0;
+    transform-origin: top center; /* Swings from the pin */
+    animation: paperSwing 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 0.3s; /* Waits a moment after scrolling */
+}
+
+@keyframes paperSwing {
+    0% { opacity: 0; transform: rotate(-8deg) translateY(-30px); }
+    40% { opacity: 1; transform: rotate(4deg) translateY(0); }
+    70% { transform: rotate(-2deg); }
+    100% { opacity: 1; transform: rotate(0deg); }
+}
+
+/* --- RIGHT: THE IMAGE & SLIM ODOMETER --- */
+.pinned-visual {
+    width: 65%;
+    position: relative;
+}
+
+.image-reveal-mask {
+    width: 100%;
+    height: 450px; /* REDUCED HEIGHT */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.parallax-img {
+    width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.15); transition: transform 1.5s ease-out;
+}
+.image-reveal-mask.is-visible .parallax-img { transform: scale(1); }
+
+/* --- THE SLIM DASHBOARD --- */
+.slim-dash {
+    position: absolute;
+    bottom: -25px; /* Overlaps less */
+    left: 10%; /* Center it more under the image */
+    right: -20px;
+    background: rgba(20, 20, 20, 0.85); /* Darker glass */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 2px solid var(--gold-end); /* Just a top gold rim */
+    border-radius: 6px;
+    padding: 15px 25px; /* SLIMMER PADDING */
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.floating-anim { animation: floatBob 6s ease-in-out infinite; }
+@keyframes floatBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* Smaller Counter Typography */
+.counter-wrap { display: flex; align-items: baseline; justify-content: center; }
+.counter-val { font-size: 1.8rem; color: #fff; font-family: var(--font-head); line-height: 1; margin: 0; }
+.counter-val::before { display: none !important; }
+.plus-sign { font-size: 1rem; color: var(--gold-end); font-weight: 700; margin-left: 2px; }
+.counter-box p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #ccc; margin-top: 3px; margin-bottom: 0; }
+
+/* Scroll Reveal */
+.reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
+.reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 900px) {
+    .pinned-container { flex-direction: column; }
+    
+    .paper-note {
+        width: 90%;
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: -40px; /* Pulls image up under it */
+        padding: 40px 20px;
+    }
+    
+    .pinned-visual { width: 100%; }
+    .image-reveal-mask { height: 350px; }
+    
+    .slim-dash {
+        left: 5%; right: 5%;
+        bottom: -30px;
+        padding: 15px;
+        flex-wrap: wrap; /* Allows wrapping if screen is too small */
+        gap: 15px;
+        animation: none; /* Disable float on phone to prevent glitching */
+    }
+    
+    .counter-box { width: 45%; } /* 2x2 grid for stats on phone */
+}

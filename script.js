@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 /* =========================================
-       MINDFITI STYLE: HYBRID MARQUEE (Walls + Endless)
+       HYBRID MARQUEE (Walls + Endless)
     ========================================= */
     if (typeof Swiper !== 'undefined' && document.querySelector('.newsSwiper')) {
         
@@ -418,7 +418,55 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    /* =========================================
+       LIVING CANVAS: SCROLL REVEAL & LIVE COUNTERS
+    ========================================= */
+    
+    // 1. Reveal Animations (Fade in text, zoom out image)
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
 
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // 2. The Live Odometer Engine (Triggers when the glass dashboard is visible)
+    const counters = document.querySelectorAll('.counter-val');
+    const dashboard = document.getElementById('counter-dashboard');
+    let counted = false;
+
+    if (dashboard) {
+        const counterObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !counted) {
+                counted = true; // Prevents it from recounting if you scroll up and down
+                
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target'); // The final number (e.g. 250)
+                        const count = +counter.innerText; // Current number
+                        
+                        // The speed logic (Lower number = faster)
+                        const inc = target / 50; 
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 20); // 20ms frame refresh
+                        } else {
+                            counter.innerText = target; // Ensure it ends on exact number
+                        }
+                    };
+                    updateCount();
+                });
+            }
+        }, { threshold: 0.5 }); // Triggers when half the dashboard is on screen
+
+        counterObserver.observe(dashboard);
+    }
 
 });
 
