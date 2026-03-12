@@ -3100,9 +3100,9 @@ body.inner-page .cta-item {
    ========================================= */
 
 .pinned-section {
-    padding: 60px 20px; /* REDUCED PADDING: Makes it 50% height */
+    padding: 60px 20px; 
     min-height: 55vh; 
-    background: transparent; /* Allows surrounding sections to blend */
+    background: transparent; 
     overflow: hidden;
     position: relative;
     z-index: 5;
@@ -3119,19 +3119,44 @@ body.inner-page .cta-item {
 /* --- LEFT: THE PINNED SCRAP PAPER --- */
 .paper-note {
     width: 45%;
-    background: #FDFBF7; /* Vintage Ivory/Cream Paper Color */
+    
+    /* CHANGED: Drop opacity to 0.45 so image bleeds through clearly */
+    /* CHANGED: Increase blur to 18px so text stays readable over the image */
+    background: rgba(253, 251, 247, 0.45);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    
     padding: 60px 40px 50px;
     position: relative;
     z-index: 10;
-    /* The overlap trick */
-    margin-right: -10%; 
-    margin-top: -30px;
-    /* Paper styling */
-    border-radius: 2px 15px 2px 2px; /* Slight imperfection */
-    box-shadow: 10px 20px 40px rgba(0,0,0,0.15); /* Deep shadow */
-    border: 1px solid #f0eae1;
+    margin-top: 0;
+    margin-right: 0;
+    border-radius: 2px 15px 2px 2px;
+
+    /* CHANGED: Stronger shadow = more depth, feels truly lifted off the image */
+    box-shadow: 
+        10px 20px 50px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.6); /* Inner top highlight = glass edge */
+
+    /* CHANGED: Border more visible to reinforce the glass edge */
+    border: 1px solid rgba(255, 255, 255, 0.45);
 }
 
+.lc-desc {
+    color: #333; /* Darker than #555 — image bleed can wash out lighter text */
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.lc-title {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    color: #1a1a1a; /* Near-black — stays legible over any image */
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-align: center;
+}
 /* The Realistic Brass Push-Pin */
 .brass-pin {
     width: 16px;
@@ -3161,12 +3186,11 @@ body.inner-page .cta-item {
 .paper-note .btn-primary { display: block; width: fit-content; margin: 0 auto; }
 
 /* --- THE ANIMATION: PENDULUM SWING --- */
-/* The paper drops in and swings from the pin */
 .paper-swing-anim {
     opacity: 0;
-    transform-origin: top center; /* Swings from the pin */
+    transform-origin: top center; 
     animation: paperSwing 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    animation-delay: 0.3s; /* Waits a moment after scrolling */
+    animation-delay: 0.3s; 
 }
 
 @keyframes paperSwing {
@@ -3176,15 +3200,19 @@ body.inner-page .cta-item {
     100% { opacity: 1; transform: rotate(0deg); }
 }
 
-/* --- RIGHT: THE IMAGE & SLIM ODOMETER --- */
+/* --- RIGHT: THE IMAGE STRETCH --- */
 .pinned-visual {
-    width: 65%;
-    position: relative;
+    /* Increased from 80% to 90% to stretch deep behind the paper */
+    width: auto; 
+    position: absolute; 
+    left: calc(-35vw + 50%);
+    right: 0; 
+    z-index: 1;
 }
 
 .image-reveal-mask {
     width: 100%;
-    height: 450px; /* REDUCED HEIGHT */
+    height: 450px; 
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
@@ -3196,29 +3224,48 @@ body.inner-page .cta-item {
 }
 .image-reveal-mask.is-visible .parallax-img { transform: scale(1); }
 
-/* --- THE SLIM DASHBOARD --- */
+/* --- THE SLIM DASHBOARD (Desktop) --- */
 .slim-dash {
     position: absolute;
-    bottom: -25px; /* Overlaps less */
-    left: 10%; /* Center it more under the image */
-    right: -20px;
-    background: rgba(20, 20, 20, 0.85); /* Darker glass */
+    bottom: -25px; 
+    
+    /* THE FIX: Pin to the right, remove the left stretch */
+    right: 40px; 
+    left: auto; 
+    width: max-content; /* Forces it to perfectly hug the 4 items */
+    gap: 35px; /* Adds even spacing between the 4 stats */
+    
+    background: rgba(20, 20, 20, 0.85); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-top: 2px solid var(--gold-end); /* Just a top gold rim */
+    border-top: 2px solid var(--gold-end); 
     border-radius: 6px;
-    padding: 15px 25px; /* SLIMMER PADDING */
+    padding: 15px 35px; /* Neater padding */
     display: flex;
-    justify-content: space-between;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    justify-content: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
     z-index: 10;
 }
 
 .floating-anim { animation: floatBob 6s ease-in-out infinite; }
 @keyframes floatBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-/* Smaller Counter Typography */
-.counter-wrap { display: flex; align-items: baseline; justify-content: center; }
+/* Varnish: Icon and Text Layout */
+.counter-box {
+    display: flex;
+    align-items: center; /* Aligns Icon with Text Block */
+    gap: 2px; 
+}
+
+.stat-icon {
+    color: var(--gold-end);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-data { text-align: left; }
+.counter-wrap { display: flex; align-items: baseline; justify-content: flex-start; }
 .counter-val { font-size: 1.8rem; color: #fff; font-family: var(--font-head); line-height: 1; margin: 0; }
 .counter-val::before { display: none !important; }
 .plus-sign { font-size: 1rem; color: var(--gold-end); font-weight: 700; margin-left: 2px; }
@@ -3230,27 +3277,60 @@ body.inner-page .cta-item {
 
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 900px) {
-    .pinned-container { flex-direction: column; }
+    .pinned-container { 
+        display: block; /* Disable flex so items can stack normally */
+    }
+    
+    .pinned-visual { 
+        position: relative; /* Bring back into flow */
+        width: 100%; 
+        right: auto;
+        left: auto;
+    }
     
     .paper-note {
         width: 90%;
-        margin-right: 0;
-        margin-top: 0;
-        margin-bottom: -40px; /* Pulls image up under it */
+        margin: 0 auto -40px; /* Center it and pull image up under it */
         padding: 40px 20px;
     }
     
-    .pinned-visual { width: 100%; }
     .image-reveal-mask { height: 350px; }
     
+/* Varnish: Mobile Parallel Odometer */
     .slim-dash {
-        left: 5%; right: 5%;
+        /* Reset the desktop positioning for mobile */
+        left: 5%; 
+        right: 5%;
+        width: 90%; /* Take up most of the screen on phone */
         bottom: -30px;
-        padding: 15px;
-        flex-wrap: wrap; /* Allows wrapping if screen is too small */
-        gap: 15px;
-        animation: none; /* Disable float on phone to prevent glitching */
+        padding: 15px 20px;
+        
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 columns */
+        gap: 15px 10px; 
+        animation: none; 
     }
     
-    .counter-box { width: 45%; } /* 2x2 grid for stats on phone */
+    .counter-box { 
+        width: 100%; 
+        display: flex;
+        flex-direction: row; 
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+    
+    .counter-val { font-size: 1.4rem; }
+    .stat-icon svg { width: 16px; height: 16px; } /* Shrink icons slightly */
+    
+    .stat-data {
+        display: flex;
+        align-items: baseline; /* Put Name parallel to Number */
+        gap: 5px;
+    }
+    
+    .counter-box p {
+        margin-top: 0; /* Remove top margin */
+        font-size: 0.65rem;
+    }
 }
