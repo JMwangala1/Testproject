@@ -3334,3 +3334,36 @@ body.inner-page .cta-item {
         font-size: 0.65rem;
     }
 }
+
+/* ── ENHANCED 3D GOLD PUSHPIN ─────────────────────────────────────── */
+.brass-pin {
+    width: 22px;
+    height: 22px;
+    /* Layered radial gradients = 3D sphere illusion */
+    background: 
+        radial-gradient(circle at 35% 30%, #fff8c0 0%, #ffd700 25%, #c8930a 55%, #7a5500 80%, #3d2800 100%);
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 
+        2px 4px 8px rgba(0,0,0,0.55),       /* Drop shadow = lift off paper */
+        inset -3px -3px 6px rgba(0,0,0,0.4), /* Inner dark = depth on bottom-right */
+        inset 2px 2px 4px rgba(255,240,120,0.6); /* Inner light = specular on top-left */
+    z-index: 20;
+}
+
+/* The pin shaft/needle below the sphere */
+.brass-pin::after {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 18px;
+    background: linear-gradient(to bottom, #c8930a 0%, #7a5500 60%, #3d2800 100%);
+    border-radius: 0 0 3px 3px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
