@@ -1,3 +1,52 @@
+/* =========================================
+   SELF-HOSTED FONTS (Privacy & Speed)
+   ========================================= */
+
+/* 1. POPPINS (400 - Regular) */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap; /* Tells browser to show fallback text instantly while font loads */
+    src: url('fonts/poppins-v24-latin-regular.woff2') format('woff2');
+}
+
+/* 2. POPPINS (500 - Medium) */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('fonts/poppins-v24-latin-500.woff2') format('woff2');
+}
+
+/* 3. POPPINS (600 - SemiBold) */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('fonts/poppins-v24-latin-600.woff2') format('woff2');
+}
+
+/* 4. PLAYFAIR DISPLAY (600 - SemiBold) */
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('fonts/playfair-display-v40-latin-600.woff2') format('woff2');
+}
+
+/* 5. PLAYFAIR DISPLAY (700 - Bold) */
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('fonts/playfair-display-v40-latin-700.woff2') format('woff2');
+}
+
 /* --- 1. GLOBAL VARIABLES & RESET --- */
 :root {
     --gold-start: #E6C86E;
